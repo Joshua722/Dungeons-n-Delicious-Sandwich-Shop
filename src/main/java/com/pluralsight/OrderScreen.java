@@ -9,15 +9,15 @@ public class OrderScreen implements CustomerOrder {
 
     public static void orderScreen() {
         System.out.println("""
-      Evening, Traveler! What do you wanna do?
-      1) Add Sandwich
-      2) Add Drink
-      3) Add Chips
-      4) Checkout
-      0) Cancel Order 
-      """);
+                Evening, Traveler! What do you wanna do?
+                1) Add Sandwich
+                2) Add Drink
+                3) Add Chips
+                4) Checkout
+                0) Cancel Order 
+                """);
         String customerInput = scanner.nextLine();
-        switch (customerInput){
+        switch (customerInput) {
 
             case "1":
                 orderAdd(customerInput);
@@ -41,7 +41,7 @@ public class OrderScreen implements CustomerOrder {
 
 
     public static void orderAdd(String customerInput) {
-        switch (customerInput){
+        switch (customerInput) {
             case "1":
                 System.out.println("""
                         How big do you want your sandwich?
@@ -132,12 +132,35 @@ public class OrderScreen implements CustomerOrder {
                         """);
                 int sideChoice = scanner.nextInt();
                 scanner.nextLine();
-
+                break;
             case "2":
                 System.out.println("""
-                        Would you like a drink to your order?
-                        
+                        Would you like to add a drink to your order?
+                        Yes
+                        No
                         """);
+                String drinkOption = scanner.nextLine().trim();
+                int drinkChoice = 0;
+                if (drinkOption.equalsIgnoreCase("yes")) {
+                    System.out.println("""
+                        1) Bubbly Dragon's Blood
+                        2) Yellow Snow
+                        3) Ogre's Snot Ale
+                        4) Dwarf's Honey Mead
+                        5) Holy Water
+                        6) Glacier Water
+                        7) Sorcerer's Power Punch
+                        8) Phoenix Tear                                             
+                                """);
+                    drinkChoice = scanner.nextInt();
+                }
+                break;
+            case "3":
+                System.out.println();
+                break;
+
+
+
         }
     }
 
