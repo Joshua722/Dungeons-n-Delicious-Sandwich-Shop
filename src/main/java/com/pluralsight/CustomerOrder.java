@@ -1,20 +1,20 @@
 package com.pluralsight;
 
 interface CustomerOrder {
-    public void orderAdd();
-    public void orderRemove();
+    public static void orderAdd(){}
+    public static void orderRemove(){}
 
 
-    public void orderCancel();
+    public static void orderCancel(){}
 
 
-    public void orderDisplay();
+    public static void orderDisplay(){}
 
 
-    public void orderTotal();
+    public static void orderTotal(){}
 
 
-    public void orderCheckout();
+    public static void orderCheckout(){}
 
 
 }

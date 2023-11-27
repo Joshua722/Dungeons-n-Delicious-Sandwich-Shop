@@ -14,10 +14,12 @@ public class Main {
 
             switch (endOrder) {
                 case "1":
-
+                    OrderScreen.orderScreen();
                 case "0": {
                     System.exit(0);
                 }
+                default:
+                    System.out.println("Try again traveler");
             }
 
         }
