@@ -14,12 +14,11 @@ public class OrderScreen implements CustomerOrder {
     public static List<Food> orders = new ArrayList<>();
 
 
-
     public static void orderScreen() throws IOException {
         String customerInput = " ";
         while (!customerInput.equalsIgnoreCase("0")) {
             System.out.println("""
-                    Evening, Traveler! What do you wanna do?
+                    Evening, Traveler! What dost thou wish to undertake?
                     1) Add Sandwich
                     2) Add Drink
                     3) Add Chips
@@ -43,7 +42,7 @@ public class OrderScreen implements CustomerOrder {
                     orderCancel();
                     break;
                 default:
-                    System.out.println("Please choose a valid option.");
+                    System.out.println("Please choose a valid option, if you will.");
                     break;
             }
         }
@@ -55,7 +54,7 @@ public class OrderScreen implements CustomerOrder {
                 int sizeChoice = 0;
                 while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
                     System.out.println("""
-                            How big do you want your sandwich?
+                            In what grand size shall your enchanted sandwich manifest?
                             1) 4"
                             2) 8"
                             3) 12"
@@ -66,7 +65,7 @@ public class OrderScreen implements CustomerOrder {
                 int breadChoice = 0;
                 while (breadChoice != 1 && breadChoice != 2 && breadChoice != 3 && breadChoice != 4) {
                     System.out.println("""
-                            What type of bread would you like?
+                            Of which grain wouldst thou prefer thy bread?
                             1) White
                             2) Wheat
                             3) Rye
@@ -93,7 +92,7 @@ public class OrderScreen implements CustomerOrder {
                 int meatChoice = 0;
                 while (meatChoice < 1 || meatChoice > 6) {
                     System.out.println("""
-                            What type of meat do you want?
+                            Of what fantastical creature's essence would you partake in your feast?
                             1) Steak
                             2) Ham
                             3) Salami
@@ -126,7 +125,7 @@ public class OrderScreen implements CustomerOrder {
                         break;
                 }
 
-                System.out.println("Would you like to add extra meat to the order? (yes or no) ");
+                System.out.println("Shall we enhance thy order with an infusion of extra enchanted meats, noble diner? (yes or no) ");
                 String extraMeat = scanner.nextLine().trim();
                 boolean extraMeatOption = false;
                 if (extraMeat.equalsIgnoreCase("yes")) {
@@ -135,7 +134,7 @@ public class OrderScreen implements CustomerOrder {
                 int cheeseChoice = 0;
                 while (cheeseChoice < 1 || cheeseChoice > 5) {
                     System.out.println("""
-                            What type of cheese would you like?
+                            Of which mystical cheese shall grace thy enchanted banquet?
                             1) American
                             2) Provolone
                             3) Cheddar
@@ -166,14 +165,14 @@ public class OrderScreen implements CustomerOrder {
 
                 boolean extraCheese = false;
                 if (cheeseChoice != 5) {
-                    System.out.println("Would you like extra cheese? (yes or no) ");
+                    System.out.println("Wouldst thou desire an additional sprinkling of enchanted cheese upon thy feast? (yes or no) ");
                     String hasExtra = scanner.nextLine().trim();
                     if (hasExtra.equalsIgnoreCase("yes")) {
                         extraCheese = true;
                     }
                 }
                 boolean toasted = false;
-                System.out.println("Would you like that toasted? (yes or no) ");
+                System.out.println("Wouldst thou prefer thy sustenance imbued with the warmth of dragon's breath, toasted to perfection? (yes or no) ");
                 String toastedChoice = scanner.nextLine().trim();
                 if (toastedChoice.equalsIgnoreCase("yes")) {
                     toasted = true;
@@ -193,7 +192,7 @@ public class OrderScreen implements CustomerOrder {
                 int toppingChoice = 0;
                 while (toppingChoice != 10) {
                     System.out.println("""
-                            What toppings would you like?
+                            Which enchanting adornments shall grace thy culinary creation?
                             1) Lettuce
                             2) Peppers
                             3) Onions
@@ -222,7 +221,7 @@ public class OrderScreen implements CustomerOrder {
                 int sauceChoice = 0;
                 while (sauceChoice != 7) {
                     System.out.println("""
-                            Would you like any sauces?
+                            Wouldst thou wish to accompany thy dish with any ambrosial elixirs or enchanted sauces?
                             1) Mayo
                             2) Mustard
                             3) Ketchup
@@ -244,7 +243,7 @@ public class OrderScreen implements CustomerOrder {
                 int sideChoice = 0;
                 while (sideChoice != 3) {
                     System.out.println("""
-                            Would you like any sides?
+                            Pray, wouldst thou desire any mystical accompaniments to complement thy main fare?
                             1) Au jus (gravy ya buffoon)
                             2) Sauce
                             3) None/Next
@@ -298,11 +297,11 @@ public class OrderScreen implements CustomerOrder {
                         drink = "Phoenix Tear";
                         break;
                     default:
-                        System.out.println("Please choose a valid option.");
+                        System.out.println("I beseech thee to select a valid choice from the enchanted options.");
                         break;
                 }
                 System.out.println("""
-                        What size would you like?
+                        In what grand magnitude shall your fantastical creation manifest?
                         1) Small
                         2) Medium
                         3) Large
@@ -316,7 +315,7 @@ public class OrderScreen implements CustomerOrder {
             case "3":
                 int chipsChoice = 0;
                 System.out.println("""
-                        What chips would you like?
+                        Of which enchanted crisps wouldst thou partake in thy repast?
                         1) Sahara Spice Fries
                         2) Classical Gold Dipped Elf's Ears
                         3) Ogre Fingers
@@ -355,7 +354,7 @@ public class OrderScreen implements CustomerOrder {
 
 
     public static void orderRemove() {
-        System.out.println("What is wrong with your meal ? ");
+        System.out.println("What ails thy noble feast, that it may not satisfy thy hungering desires? ");
         int count = 1;
         for (Food f : orders) {
             System.out.println(count + ")" + f.toString() + " Price: " + dmt.format(f.getPrice()));
@@ -371,29 +370,29 @@ public class OrderScreen implements CustomerOrder {
     }
 
     public static void orderCancel() throws IOException {
-        System.out.println("Please come again and try our food when you can Traveller! ");
+        System.out.println("I bid thee return at thy leisure, O Traveler, and indulge once more in the delights of our culinary enchantments!");
         orders.clear();
         Main.main(null);
     }
 
     public static void orderCheckout() throws IOException {
         double totalPrice = 0;
-        System.out.println("Whats up doc! Sadly de time has come to taketh thou gold!!!! ");
+        System.out.println("Hark! Greetings, esteemed individual! Regrettably, the time hath come to claim thine gold with a heavy heart.");
         for (Food f : orders) {
             System.out.println(f.toString() + " Price: " + dmt.format(f.getPrice()));
             totalPrice += f.getPrice();
         }
         System.out.println("Thou price: " + dmt.format(totalPrice));
         System.out.println("""
-                Does everything look to your liking?
+                Doth everything appear satisfactory unto thee?
                 Yay
                 Nay
                 """);
         String customerInput = scanner.nextLine();
         if (customerInput.charAt(0) == 'Y' || customerInput.charAt(0) == 'y') {
-            System.out.println("We are going to stamp your receipt on our new dragon paper! ");
+            System.out.println("Behold! We shall imprint thy receipt upon parchment of the noble dragon's ilk, fresh from our enchanted treasury! ");
             CustomerReceipt.receiptReader(orders, totalPrice);
-            System.out.println("Please collect your receipt at the front door our Dwarven worker will hand it to you! Have the greatest evening! ");
+            System.out.println("Pray, retrieve thy receipt at the threshold, where our diligent Dwarven artisan awaits to deliver it unto thee! May thy evening be filled with grandeur! ");
             orders.clear();
             Main.main(null);
         }
