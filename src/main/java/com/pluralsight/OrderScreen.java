@@ -1,10 +1,15 @@
 package com.pluralsight;
 
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.*;
 
 public class OrderScreen implements CustomerOrder {
 
     public static Scanner scanner = new Scanner(System.in);
+
+    public static List<Food> orders = new ArrayList<>();
+    public static int count = 1;
 
 
     public static void orderScreen() {
@@ -61,6 +66,21 @@ public class OrderScreen implements CustomerOrder {
                         """);
                 int breadChoice = scanner.nextInt();
                 scanner.nextLine();
+                String bread = "";
+                switch (breadChoice) {
+                    case 1:
+                        bread = "White";
+                        break;
+                    case 2:
+                        bread = "Wheat";
+                        break;
+                    case 3:
+                        bread = "Rye";
+                        break;
+                    case 4:
+                        bread = "Wrap";
+                        break;
+                }
 
                 System.out.println("""
                         What type of meat do you want?
@@ -73,9 +93,34 @@ public class OrderScreen implements CustomerOrder {
                         """);
                 int meatChoice = scanner.nextInt();
                 scanner.nextLine();
+                String meat = "";
+                switch (meatChoice) {
+                    case 1:
+                        meat = "Steak";
+                        break;
+                    case 2:
+                        meat = "Ham";
+                        break;
+                    case 3:
+                        meat = "Salami";
+                        break;
+                    case 4:
+                        meat = "Roast Beef";
+                        break;
+                    case 5:
+                        meat = "Chicken";
+                        break;
+                    case 6:
+                        meat = "Bacon";
+                        break;
+                }
 
                 System.out.println("Would you like to add extra meat to the order? (yes or no) ");
                 String extraMeat = scanner.nextLine().trim();
+                boolean extraMeatOption = false;
+                if (extraMeat.equalsIgnoreCase("yes")) {
+                    extraMeatOption = true;
+                }
 
                 System.out.println("""
                         What type of cheese would you like?
@@ -87,6 +132,24 @@ public class OrderScreen implements CustomerOrder {
                         """);
                 int cheeseChoice = scanner.nextInt();
                 scanner.nextLine();
+                String cheese = "";
+                switch (cheeseChoice) {
+                    case 1:
+                        meat = "American";
+                        break;
+                    case 2:
+                        meat = "Provolone";
+                        break;
+                    case 3:
+                        meat = "Cheddar";
+                        break;
+                    case 4:
+                        meat = "Swiss";
+                        break;
+                    case 5:
+                        meat = "No Cheese";
+                        break;
+                }
 
                 boolean extraCheese = false;
                 if (cheeseChoice != 5) {
@@ -97,41 +160,91 @@ public class OrderScreen implements CustomerOrder {
                     }
 
                 }
+                boolean toasted = false;
+                System.out.println("Would you like that toasted? (yes or no) ");
+                String toastedChoice = scanner.nextLine().trim();
+                if (toastedChoice.equalsIgnoreCase("yes")) {
+                    toasted = true;
+                }
+                List<String> toppings = new ArrayList<>();
+                toppings.add("Lettuce");
+                toppings.add("Peppers");
+                toppings.add("Onions");
+                toppings.add("Tomatoes");
+                toppings.add("Jalepenos");
+                toppings.add("Cucumbers");
+                toppings.add("Pickles");
+                toppings.add("Guacamole");
+                toppings.add("Mushrooms");
+                toppings.add("None");
 
-                System.out.println("""
-                        What toppings would you like?
-                        1) Lettuce
-                        2) Peppers
-                        3) Onions
-                        4) Tomatoes
-                        5) Jalepenos
-                        6) Cucumbers
-                        7) Pickles
-                        8) Guacamole
-                        9) Mushrooms
-                        """);
-                int toppingChoice = scanner.nextInt();
-                scanner.nextLine();
-
-                System.out.println("""
-                        Would you like any sauces?
-                        1) Mayo
-                        2) Mustard
-                        3) Ketchup
-                        4) Ranch
-                        5) Thousands islands
-                        6) Vinaigrette
-                        """);
-                int sauceChoice = scanner.nextInt();
-                scanner.nextLine();
-
-                System.out.println("""
-                        Would you like any sides?
-                        1) Au jus (gravy ya buffoon)
-                        2) Sauce
-                        """);
-                int sideChoice = scanner.nextInt();
-                scanner.nextLine();
+                List<String> sandwichToppings = new ArrayList<>();
+                int toppingChoice = 0;
+                while(toppingChoice != 10) {
+                    System.out.println("""
+                            What toppings would you like?
+                            1) Lettuce
+                            2) Peppers
+                            3) Onions
+                            4) Tomatoes
+                            5) Jalepenos
+                            6) Cucumbers
+                            7) Pickles
+                            8) Guacamole
+                            9) Mushrooms
+                            10) None
+                            """);
+                    toppingChoice = scanner.nextInt();
+                    scanner.nextLine();
+                    if(toppingChoice > 0 && toppingChoice < toppings.size()){
+                        sandwichToppings.add(toppings.get(toppingChoice - 1));
+                    }
+                }
+                List<String> sauces = new ArrayList<>();
+                sauces.add("Mayo");
+                sauces.add("Mustard");
+                sauces.add("Ketchup");
+                sauces.add("Ranch");
+                sauces.add("Thousand Islands");
+                sauces.add("Vinaigrette");
+                sauces.add("None");
+                int sauceChoice = 0;
+                while(sauceChoice!= 7) {
+                    System.out.println("""
+                            Would you like any sauces?
+                            1) Mayo
+                            2) Mustard
+                            3) Ketchup
+                            4) Ranch
+                            5) Thousands islands
+                            6) Vinaigrette
+                            7) None
+                            """);
+                    sauceChoice = scanner.nextInt();
+                    scanner.nextLine();
+                    if(sauceChoice > 0 && sauceChoice < sauces.size()){
+                        sandwichToppings.add(sauces.get(sauceChoice - 1));
+                    }
+                }
+                List<String> sides = new ArrayList<>();
+                sides.add("Au jus");
+                sides.add("Sauce");
+                sides.add("None");
+                int sideChoice = 0;
+                while(sideChoice != 3) {
+                    System.out.println("""
+                            Would you like any sides?
+                            1) Au jus (gravy ya buffoon)
+                            2) Sauce
+                            3) None
+                            """);
+                    sideChoice = scanner.nextInt();
+                    scanner.nextLine();
+                    if(sideChoice > 0 && sideChoice < sides.size()){
+                        sandwichToppings.add(sides.get(sideChoice - 1));
+                    }
+                }
+                orders.add(new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, toasted, extraMeatOption, extraCheese));
                 break;
             case "2":
                 System.out.println("""
@@ -143,22 +256,88 @@ public class OrderScreen implements CustomerOrder {
                 int drinkChoice = 0;
                 if (drinkOption.equalsIgnoreCase("yes")) {
                     System.out.println("""
-                        1) Bubbly Dragon's Blood
-                        2) Yellow Snow
-                        3) Ogre's Snot Ale
-                        4) Dwarf's Honey Mead
-                        5) Holy Water
-                        6) Glacier Water
-                        7) Sorcerer's Power Punch
-                        8) Phoenix Tear                                             
-                                """);
+                            1) Bubbly Dragon's Blood
+                            2) Yellow Snow
+                            3) Ogre's Snot Ale
+                            4) Dwarf's Honey Mead
+                            5) Holy Water
+                            6) Glacier Water
+                            7) Sorcerer's Power Punch
+                            8) Phoenix Tear                                            
+                            """);
                     drinkChoice = scanner.nextInt();
+                    scanner.nextLine();
+                    String drink = "";
+                    switch (drinkChoice) {
+                        case 1:
+                            drink = "Bubbly Dragon's Blood";
+                            break;
+                        case 2:
+                            drink = "Yellow Snow";
+                            break;
+                        case 3:
+                            drink = "Ogre's Snot Ale";
+                            break;
+                        case 4:
+                            drink = "Dwarf's Honey Mead";
+                            break;
+                        case 5:
+                            drink = "Holy Water";
+                            break;
+                        case 6:
+                            drink = "Glacier Water";
+                            break;
+                        case 7:
+                            drink = "Sorcerer's Power Punch";
+                            break;
+                        case 8:
+                            drink = "Phoenix Tear";
+                            break;
+                        default:
+                            System.out.println("Please choose a valid option.");
+                            break;
+                    }
+                    System.out.println("""
+                            What size would you like?
+                            1) Small
+                            2) Medium
+                            3) Large
+                            """);
+                    int size = scanner.nextInt();
+                    if (!drink.isEmpty()) {
+                        orders.add(new Drinks(size, drink));
+                    }
                 }
                 break;
             case "3":
-                System.out.println();
-                break;
-
+                int chipsChoice = 0;
+                System.out.println("""
+                        What chips would you like?
+                        1) Sahara Spice Nachos
+                        2) Classic
+                        3) Ogre Fingers
+                        4) Mithral Halls Nachos
+                        """);
+                chipsChoice = scanner.nextInt();
+                scanner.nextLine();
+                String chips = "";
+                switch (chipsChoice) {
+                    case 1:
+                        chips = "Sahara Spice Nachos";
+                        break;
+                    case 2:
+                        chips = "Classic";
+                        break;
+                    case 3:
+                        chips = "Ogre Fingers";
+                        break;
+                    case 4:
+                        chips = "Mithral Halls Nachos";
+                        break;
+                }
+                if (!chips.isEmpty()) {
+                    orders.add(new Chips(1, chips));
+                }
 
 
         }
