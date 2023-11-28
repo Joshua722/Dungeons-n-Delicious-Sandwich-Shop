@@ -74,10 +74,10 @@ public class OrderScreen implements CustomerOrder {
                 while (breadChoice != 1 && breadChoice != 2 && breadChoice != 3 && breadChoice != 4) {
                     System.out.println("""
                             Of which grain wouldst thou prefer thy bread?
-                            1) White
-                            2) Wheat
-                            3) Rye
-                            4) Wrap
+                            1) Dragon's Ember Barley
+                            2) Moonstone Wheat
+                            3) Celestial Millet
+                            4) Mermaid's Seagrass
                             """);
                     breadChoice = scanner.nextInt();
                     scanner.nextLine();
@@ -85,28 +85,28 @@ public class OrderScreen implements CustomerOrder {
                 String bread = "";
                 switch (breadChoice) {
                     case 1:
-                        bread = "White";
+                        bread = "Dragon's Ember Barley";
                         break;
                     case 2:
-                        bread = "Wheat";
+                        bread = "Moonstone Wheat";
                         break;
                     case 3:
-                        bread = "Rye";
+                        bread = "Celestial Millet";
                         break;
                     case 4:
-                        bread = "Wrap";
+                        bread = "Mermaid's Seagrass";
                         break;
                 }
                 int meatChoice = 0;
                 while (meatChoice < 1 || meatChoice > 6) {
                     System.out.println("""
                             Of what fantastical creature's essence would you partake in your feast?
-                            1) Steak
-                            2) Ham
-                            3) Salami
-                            4) Roast beef
-                            5) Chicken
-                            6) Bacon
+                            1) Griffin's Roast
+                            2) Dragonfire Sausages
+                            3) Unicorn Tenderloin
+                            4) Kraken Calamari
+                            5) Troll Tender
+                            6) Gorgon Charcuterie
                             """);
                     meatChoice = scanner.nextInt();
                     scanner.nextLine();
@@ -114,22 +114,22 @@ public class OrderScreen implements CustomerOrder {
                 String meat = "";
                 switch (meatChoice) {
                     case 1:
-                        meat = "Steak";
+                        meat = "Griffin's Roast";
                         break;
                     case 2:
-                        meat = "Ham";
+                        meat = "Dragonfire Sausages";
                         break;
                     case 3:
-                        meat = "Salami";
+                        meat = "Unicorn Tenderloin";
                         break;
                     case 4:
-                        meat = "Roast Beef";
+                        meat = "Kraken Calamari";
                         break;
                     case 5:
-                        meat = "Chicken";
+                        meat = "Troll Tender";
                         break;
                     case 6:
-                        meat = "Bacon";
+                        meat = "Gorgon Charcuterie";
                         break;
                 }
 
@@ -143,10 +143,10 @@ public class OrderScreen implements CustomerOrder {
                 while (cheeseChoice < 1 || cheeseChoice > 5) {
                     System.out.println("""
                             Of which mystical cheese shall grace thy enchanted banquet?
-                            1) American
-                            2) Provolone
-                            3) Cheddar
-                            4) Swiss
+                            1) Wyrmwood Cheddar
+                            2) Goblin Blue
+                            3) Elven Moon Cheese
+                            4) Dwarven Forge Gruyère
                             5) No cheese
                             """);
                     cheeseChoice = scanner.nextInt();
@@ -155,16 +155,16 @@ public class OrderScreen implements CustomerOrder {
                 String cheese = "";
                 switch (cheeseChoice) {
                     case 1:
-                        cheese = "American";
+                        cheese = "Wyrmwood Cheddar";
                         break;
                     case 2:
-                        cheese = "Provolone";
+                        cheese = "Goblin Blue";
                         break;
                     case 3:
-                        cheese = "Cheddar";
+                        cheese = "Elven Moon Cheese";
                         break;
                     case 4:
-                        cheese = "Swiss";
+                        cheese = "Dwarven Forge Gruyère";
                         break;
                     case 5:
                         cheese = "No Cheese";
@@ -186,30 +186,30 @@ public class OrderScreen implements CustomerOrder {
                     toasted = true;
                 }
                 List<String> toppings = new ArrayList<>();
-                toppings.add("Lettuce");
-                toppings.add("Peppers");
-                toppings.add("Onions");
-                toppings.add("Tomatoes");
-                toppings.add("Jalapenos");
-                toppings.add("Cucumbers");
-                toppings.add("Pickles");
+                toppings.add("Centaur-Smoked Tomatoes");
+                toppings.add("Mystic Mushroom Medley");
+                toppings.add("Dragonfruit Slices");
+                toppings.add("Enchanted Herb Butter Lettuce");
+                toppings.add("Banshee's Bitter Arugula");
+                toppings.add("Siren's Sea Salted Cucumbers");
+                toppings.add("Unicorn-Roasted Red Pepper Strips");
                 toppings.add("Guacamole");
-                toppings.add("Mushrooms");
+                toppings.add("Goblin Pickled Peppers");
                 toppings.add("None/Next");
                 List<String> sandwichToppings = new ArrayList<>();
                 int toppingChoice = 0;
                 while (toppingChoice != 10) {
                     System.out.println("""
                             Which enchanting adornments shall grace thy culinary creation?
-                            1) Lettuce
-                            2) Peppers
-                            3) Onions
-                            4) Tomatoes
-                            5) Jalapenos
-                            6) Cucumbers
-                            7) Pickles
+                            1) Centaur-Smoked Tomatoes
+                            2) Mystic Mushroom Medley
+                            3) Dragonfruit Slices
+                            4) Enchanted Herb Butter Lettuce
+                            5) Banshee's Bitter Arugula
+                            6) Siren's Sea Salted Cucumbers
+                            7) Unicorn-Roasted Red Pepper Strips
                             8) Guacamole
-                            9) Mushrooms
+                            9) Goblin Pickled Peppers
                             10) None/Next
                             """);
                     toppingChoice = scanner.nextInt();
@@ -219,10 +219,10 @@ public class OrderScreen implements CustomerOrder {
                     }
                 }
                 List<String> sauces = new ArrayList<>();
-                sauces.add("Mayo");
-                sauces.add("Mustard");
-                sauces.add("Ketchup");
-                sauces.add("Ranch");
+                sauces.add("Dragon's Breath Sriracha Mayo");
+                sauces.add("Mermaid's Seaweed Pesto");
+                sauces.add("Enchanted Basilisk Aioli");
+                sauces.add("Chimera Roasted Red Pepper Hummus");
                 sauces.add("Thousand Islands");
                 sauces.add("Vinaigrette");
                 sauces.add("None/Next");
@@ -230,10 +230,10 @@ public class OrderScreen implements CustomerOrder {
                 while (sauceChoice != 7) {
                     System.out.println("""
                             Wouldst thou wish to accompany thy dish with any ambrosial elixirs or enchanted sauces?
-                            1) Mayo
-                            2) Mustard
-                            3) Ketchup
-                            4) Ranch
+                            1) Dragon's Breath Sriracha Mayo
+                            2) Mermaid's Seaweed Pesto
+                            3) Enchanted Basilisk Aioli
+                            4) Chimera Roasted Red Pepper Hummus
                             5) Thousands islands
                             6) Vinaigrette
                             7) None/Next
@@ -245,15 +245,15 @@ public class OrderScreen implements CustomerOrder {
                     }
                 }
                 List<String> sides = new ArrayList<>();
-                sides.add("Au jus");
-                sides.add("Sauce");
+                sides.add("Elf-Kissed Quinoa Pilaf");
+                sides.add("Harpy's Herb-infused Rice");
                 sides.add("None");
                 int sideChoice = 0;
                 while (sideChoice != 3) {
                     System.out.println("""
                             Pray, wouldst thou desire any mystical accompaniments to complement thy main fare?
-                            1) Au jus (gravy ya buffoon)
-                            2) Sauce
+                            1) Elf-Kissed Quinoa Pilaf
+                            2) Harpy's Herb-infused Rice
                             3) None/Next
                             """);
                     sideChoice = scanner.nextInt();
@@ -426,78 +426,78 @@ public class OrderScreen implements CustomerOrder {
         String cheese = "";
         switch (breadChoice) {
             case 1:
-                bread = "White";
+                bread = "Dragon's Ember Barley";
                 break;
             case 2:
-                bread = "Wheat";
+                bread = "Moonstone Wheat";
                 break;
             case 3:
-                bread = "Rye";
+                bread = "Celestial Millet";
                 break;
             case 4:
-                bread = "Wrap";
+                bread = "Mermaid's Seagrass";
                 break;
         }
         switch (meatChoice) {
             case 1:
-                meat = "Steak";
+                meat = "Griffin's Roast";
                 break;
             case 2:
-                meat = "Ham";
+                meat = "Dragonfire Sausages";
                 break;
             case 3:
-                meat = "Salami";
+                meat = "Unicorn Tenderloin";
                 break;
             case 4:
-                meat = "Roast Beef";
+                meat = "Kraken Calamari";
                 break;
             case 5:
-                meat = "Chicken";
+                meat = "Troll Tender";
                 break;
             case 6:
-                meat = "Bacon";
+                meat = "Gorgon Charcuterie";
                 break;
         }
         switch (cheeseChoice) {
             case 1:
-                cheese = "American";
+                cheese = "Wyrmwood Cheddar";
                 break;
             case 2:
-                cheese = "Provolone";
+                cheese = "Goblin Blue";
                 break;
             case 3:
-                cheese = "Cheddar";
+                cheese = "Elven Moon Cheese";
                 break;
             case 4:
-                cheese = "Swiss";
+                cheese = "Dwarven Forge Gruyère";
                 break;
             case 5:
                 cheese = "No Cheese";
                 break;
         }
         List<String> toppings = new ArrayList<>();
-        toppings.add("Lettuce");
-        toppings.add("Peppers");
-        toppings.add("Onions");
-        toppings.add("Tomatoes");
-        toppings.add("Jalapenos");
-        toppings.add("Cucumbers");
-        toppings.add("Pickles");
+        toppings.add("Centaur-Smoked Tomatoes");
+        toppings.add("Mystic Mushroom Medley");
+        toppings.add("Dragonfruit Slices");
+        toppings.add("Enchanted Herb Butter Lettuce");
+        toppings.add("Banshee's Bitter Arugula");
+        toppings.add("Siren's Sea Salted Cucumbers");
+        toppings.add("Unicorn-Roasted Red Pepper Strips");
         toppings.add("Guacamole");
-        toppings.add("Mushrooms");
+        toppings.add("Goblin Pickled Peppers");
         toppings.add("None/Next");
         List<String> sandwichToppings = new ArrayList<>();
         List<String> sauces = new ArrayList<>();
-        sauces.add("Mayo");
-        sauces.add("Mustard");
-        sauces.add("Ketchup");
-        sauces.add("Ranch");
+        sauces.add("Dragon's Breath Sriracha Mayo");
+        sauces.add("Mermaid's Seaweed Pesto");
+        sauces.add("Enchanted Basilisk Aioli");
+        sauces.add("Chimera Roasted Red Pepper Hummus");
         sauces.add("Thousand Islands");
         sauces.add("Vinaigrette");
         sauces.add("None/Next");
         List<String> sides = new ArrayList<>();
-        sides.add("Au jus");
-        sides.add("Sauce");
+        sides.add("Elf-Kissed Quinoa Pilaf");
+        sides.add("Harpy's Herb-infused Rice");
         sides.add("None");
         int toppingsRoll = (int)(Math.random() * 10) + 1;
         while(toppingsRoll != 10){
@@ -557,78 +557,78 @@ public class OrderScreen implements CustomerOrder {
         String cheese = "";
         switch (breadChoice) {
             case 1:
-                bread = "White";
+                bread = "Dragon's Ember Barley";
                 break;
             case 2:
-                bread = "Wheat";
+                bread = "Moonstone Wheat";
                 break;
             case 3:
-                bread = "Rye";
+                bread = "Celestial Millet";
                 break;
             case 4:
-                bread = "Wrap";
+                bread = "Mermaid's Seagrass";
                 break;
         }
         switch (meatChoice) {
             case 1:
-                meat = "Steak";
+                meat = "Griffin's Roast";
                 break;
             case 2:
-                meat = "Ham";
+                meat = "Dragonfire Sausages";
                 break;
             case 3:
-                meat = "Salami";
+                meat = "Unicorn Tenderloin";
                 break;
             case 4:
-                meat = "Roast Beef";
+                meat = "Kraken Calamari";
                 break;
             case 5:
-                meat = "Chicken";
+                meat = "Troll Tender";
                 break;
             case 6:
-                meat = "Bacon";
+                meat = "Gorgon Charcuterie";
                 break;
         }
         switch (cheeseChoice) {
             case 1:
-                cheese = "American";
+                cheese = "Wyrmwood Cheddar";
                 break;
             case 2:
-                cheese = "Provolone";
+                cheese = "Goblin Blue";
                 break;
             case 3:
-                cheese = "Cheddar";
+                cheese = "Elven Moon Cheese";
                 break;
             case 4:
-                cheese = "Swiss";
+                cheese = "Dwarven Forge Gruyère";
                 break;
             case 5:
                 cheese = "No Cheese";
                 break;
         }
         List<String> toppings = new ArrayList<>();
-        toppings.add("Lettuce");
-        toppings.add("Peppers");
-        toppings.add("Onions");
-        toppings.add("Tomatoes");
-        toppings.add("Jalapenos");
-        toppings.add("Cucumbers");
-        toppings.add("Pickles");
+        toppings.add("Centaur-Smoked Tomatoes");
+        toppings.add("Mystic Mushroom Medley");
+        toppings.add("Dragonfruit Slices");
+        toppings.add("Enchanted Herb Butter Lettuce");
+        toppings.add("Banshee's Bitter Arugula");
+        toppings.add("Siren's Sea Salted Cucumbers");
+        toppings.add("Unicorn-Roasted Red Pepper Strips");
         toppings.add("Guacamole");
-        toppings.add("Mushrooms");
+        toppings.add("Goblin Pickled Peppers");
         toppings.add("None/Next");
         List<String> sandwichToppings = new ArrayList<>();
         List<String> sauces = new ArrayList<>();
-        sauces.add("Mayo");
-        sauces.add("Mustard");
-        sauces.add("Ketchup");
-        sauces.add("Ranch");
+        sauces.add("Dragon's Breath Sriracha Mayo");
+        sauces.add("Mermaid's Seaweed Pesto");
+        sauces.add("Enchanted Basilisk Aioli");
+        sauces.add("Chimera Roasted Red Pepper Hummus");
         sauces.add("Thousand Islands");
         sauces.add("Vinaigrette");
         sauces.add("None/Next");
         List<String> sides = new ArrayList<>();
-        sides.add("Au jus");
-        sides.add("Sauce");
+        sides.add("Elf-Kissed Quinoa Pilaf");
+        sides.add("Harpy's Herb-infused Rice");
         sides.add("None");
         int toppingsRoll = (int)(Math.random() * 10) + 1;
         while(toppingsRoll != 10){
@@ -721,7 +721,7 @@ public class OrderScreen implements CustomerOrder {
                 break;
         }
         Chips chip = new Chips(1, chips);
-        System.out.println("Would you like to add the following meal to the order? ");
+        System.out.println("Wilt thou include the meal, a dish of magical essence, to thy feast? ");
         System.out.println(rolled.toString());
         System.out.println(drinks.toString());
         System.out.println(chip.toString());
