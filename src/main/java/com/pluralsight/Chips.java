@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Chips extends Food{
+public class Chips extends Food {
     private String flavor;
 
     public Chips(int size, String flavor) {
@@ -20,8 +20,9 @@ public class Chips extends Food{
     public String toString() {
         return "Chips: " + flavor;
     }
+
     @Override
-    public double getPrice(){
+    public double getPrice() {
         return 1.50;
     }
 }

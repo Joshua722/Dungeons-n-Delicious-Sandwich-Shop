@@ -1,6 +1,8 @@
 package com.pluralsight;
+
 import java.util.*;
-public class Sandwich extends Food{
+
+public class Sandwich extends Food {
     private String bread, meat, cheese;
     private List<String> toppings;
     private boolean toasted, extraMeat, extraCheese;
@@ -48,7 +50,7 @@ public class Sandwich extends Food{
         this.toppings = toppings;
     }
 
-    public void addTopping(String topping){
+    public void addTopping(String topping) {
         this.toppings.add(topping);
     }
 
@@ -81,19 +83,19 @@ public class Sandwich extends Food{
         StringBuilder sandwich = new StringBuilder();
         sandwich.append("Sandwich: ");
         sandwich.append(bread + " " + meat + " " + cheese);
-        for(String s: toppings){
+        for (String s : toppings) {
             sandwich.append(" " + s);
         }
-        if(toasted) {
+        if (toasted) {
             sandwich.append(" Toasted");
         }
         return sandwich.toString();
     }
 
     @Override
-    public double getPrice(){
+    public double getPrice() {
         double price = 0.0;
-        switch(getSize()){
+        switch (getSize()) {
             case "Small":
                 price += 5.50;
                 break;
@@ -104,8 +106,8 @@ public class Sandwich extends Food{
                 price += 8.50;
                 break;
         }
-        if(!meat.isEmpty()){
-            switch(getSize()){
+        if (!meat.isEmpty()) {
+            switch (getSize()) {
                 case "Small":
                     price += 1.00;
                     break;
@@ -116,8 +118,8 @@ public class Sandwich extends Food{
                     price += 3.00;
                     break;
             }
-            if(extraMeat){
-                switch(getSize()){
+            if (extraMeat) {
+                switch (getSize()) {
                     case "Small":
                         price += 0.50;
                         break;
@@ -130,8 +132,8 @@ public class Sandwich extends Food{
                 }
             }
         }
-        if(!cheese.isEmpty()){
-            switch(getSize()){
+        if (!cheese.isEmpty()) {
+            switch (getSize()) {
                 case "Small":
                     price += 0.75;
                     break;
@@ -142,8 +144,8 @@ public class Sandwich extends Food{
                     price += 2.25;
                     break;
             }
-            if(extraCheese){
-                switch(getSize()){
+            if (extraCheese) {
+                switch (getSize()) {
                     case "Small":
                         price += 0.30;
                         break;

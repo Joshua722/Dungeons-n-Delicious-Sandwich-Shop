@@ -1,4 +1,5 @@
 package com.pluralsight;
+
 import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -11,10 +12,10 @@ public class OrderScreen implements CustomerOrder {
     public static Scanner scanner = new Scanner(System.in);
 
     public static List<Food> orders = new ArrayList<>();
-    public static int count = 1;
 
 
-    public static void orderScreen() {
+
+    public static void orderScreen() throws IOException {
         String customerInput = " ";
         while (!customerInput.equalsIgnoreCase("0")) {
             System.out.println("""
@@ -23,24 +24,22 @@ public class OrderScreen implements CustomerOrder {
                     2) Add Drink
                     3) Add Chips
                     4) Checkout
-                    0) Cancel Order 
+                    0) Cancel Order
                     """);
             customerInput = scanner.nextLine().trim();
             switch (customerInput) {
 
-                case "1":
-                    orderAdd(customerInput);
-                    break;
-                case "2":
-                    orderAdd(customerInput);
-                    break;
-                case "3":
+                case "1", "2", "3":
                     orderAdd(customerInput);
                     break;
                 case "4":
                     orderCheckout();
                     break;
+                case "5":
+                    orderRemove();
+                    break;
                 case "0":
+                    orderCancel();
                     break;
                 default:
                     System.out.println("Please choose a valid option.");
@@ -60,7 +59,6 @@ public class OrderScreen implements CustomerOrder {
                         """);
                 int sizeChoice = scanner.nextInt();
                 scanner.nextLine();
-
                 System.out.println("""
                         What type of bread would you like?
                         1) White
@@ -125,7 +123,6 @@ public class OrderScreen implements CustomerOrder {
                 if (extraMeat.equalsIgnoreCase("yes")) {
                     extraMeatOption = true;
                 }
-
                 System.out.println("""
                         What type of cheese would you like?
                         1) American
@@ -162,7 +159,6 @@ public class OrderScreen implements CustomerOrder {
                     if (hasExtra.equalsIgnoreCase("yes")) {
                         extraCheese = true;
                     }
-
                 }
                 boolean toasted = false;
                 System.out.println("Would you like that toasted? (yes or no) ");
@@ -175,23 +171,22 @@ public class OrderScreen implements CustomerOrder {
                 toppings.add("Peppers");
                 toppings.add("Onions");
                 toppings.add("Tomatoes");
-                toppings.add("Jalepenos");
+                toppings.add("Jalapenos");
                 toppings.add("Cucumbers");
                 toppings.add("Pickles");
                 toppings.add("Guacamole");
                 toppings.add("Mushrooms");
                 toppings.add("None/Next");
-
                 List<String> sandwichToppings = new ArrayList<>();
                 int toppingChoice = 0;
-                while(toppingChoice != 10) {
+                while (toppingChoice != 10) {
                     System.out.println("""
                             What toppings would you like?
                             1) Lettuce
                             2) Peppers
                             3) Onions
                             4) Tomatoes
-                            5) Jalepenos
+                            5) Jalapenos
                             6) Cucumbers
                             7) Pickles
                             8) Guacamole
@@ -200,7 +195,7 @@ public class OrderScreen implements CustomerOrder {
                             """);
                     toppingChoice = scanner.nextInt();
                     scanner.nextLine();
-                    if(toppingChoice > 0 && toppingChoice < toppings.size()){
+                    if (toppingChoice > 0 && toppingChoice < toppings.size()) {
                         sandwichToppings.add(toppings.get(toppingChoice - 1));
                     }
                 }
@@ -213,7 +208,7 @@ public class OrderScreen implements CustomerOrder {
                 sauces.add("Vinaigrette");
                 sauces.add("None/Next");
                 int sauceChoice = 0;
-                while(sauceChoice!= 7) {
+                while (sauceChoice != 7) {
                     System.out.println("""
                             Would you like any sauces?
                             1) Mayo
@@ -226,7 +221,7 @@ public class OrderScreen implements CustomerOrder {
                             """);
                     sauceChoice = scanner.nextInt();
                     scanner.nextLine();
-                    if(sauceChoice > 0 && sauceChoice < sauces.size()){
+                    if (sauceChoice > 0 && sauceChoice < sauces.size()) {
                         sandwichToppings.add(sauces.get(sauceChoice - 1));
                     }
                 }
@@ -235,7 +230,7 @@ public class OrderScreen implements CustomerOrder {
                 sides.add("Sauce");
                 sides.add("None");
                 int sideChoice = 0;
-                while(sideChoice != 3) {
+                while (sideChoice != 3) {
                     System.out.println("""
                             Would you like any sides?
                             1) Au jus (gravy ya buffoon)
@@ -244,95 +239,100 @@ public class OrderScreen implements CustomerOrder {
                             """);
                     sideChoice = scanner.nextInt();
                     scanner.nextLine();
-                    if(sideChoice > 0 && sideChoice < sides.size()){
+                    if (sideChoice > 0 && sideChoice < sides.size()) {
                         sandwichToppings.add(sides.get(sideChoice - 1));
                     }
                 }
                 orders.add(new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, toasted, extraMeatOption, extraCheese));
                 break;
-
             case "2":
                 int drinkChoice = 0;
-                    System.out.println("""
-                            1) Bubbly Dragon's Blood
-                            2) Yellow Snow
-                            3) Ogre's Snot Ale
-                            4) Dwarf's Honey Mead
-                            5) Holy Water
-                            6) Glacier Water
-                            7) Sorcerer's Power Punch
-                            8) Phoenix Tear
-                            """);
-                    drinkChoice = scanner.nextInt();
-                    scanner.nextLine();
-
-                    String drink = "";
-                    switch (drinkChoice) {
-                        case 1:
-                            drink = "Bubbly Dragon's Blood";
-                            break;
-                        case 2:
-                            drink = "Yellow Snow";
-                            break;
-                        case 3:
-                            drink = "Ogre's Snot Ale";
-                            break;
-                        case 4:
-                            drink = "Dwarf's Honey Mead";
-                            break;
-                        case 5:
-                            drink = "Holy Water";
-                            break;
-                        case 6:
-                            drink = "Glacier Water";
-                            break;
-                        case 7:
-                            drink = "Sorcerer's Power Punch";
-                            break;
-                        case 8:
-                            drink = "Phoenix Tear";
-                            break;
-                        default:
-                            System.out.println("Please choose a valid option.");
-                            break;
-                    }
-                    System.out.println("""
-                            What size would you like?
-                            1) Small
-                            2) Medium
-                            3) Large
-                            """);
-                    int size = scanner.nextInt();
-                    scanner.nextLine();
-                    if (!drink.isEmpty()) {
-                        orders.add(new Drinks(size, drink));
-                    }
-
+                System.out.println("""
+                        1) Bubbly Dragon's Blood
+                        2) Yellow Snow
+                        3) Ogre's Snot Ale
+                        4) Dwarf's Honey Mead
+                        5) Holy Water
+                        6) Glacier Water
+                        7) Sorcerer's Power Punch
+                        8) Phoenix Tear
+                        """);
+                drinkChoice = scanner.nextInt();
+                scanner.nextLine();
+                String drink = "";
+                switch (drinkChoice) {
+                    case 1:
+                        drink = "Bubbly Dragon's Blood";
+                        break;
+                    case 2:
+                        drink = "Yellow Snow";
+                        break;
+                    case 3:
+                        drink = "Ogre's Snot Ale";
+                        break;
+                    case 4:
+                        drink = "Dwarf's Honey Mead";
+                        break;
+                    case 5:
+                        drink = "Holy Water";
+                        break;
+                    case 6:
+                        drink = "Glacier Water";
+                        break;
+                    case 7:
+                        drink = "Sorcerer's Power Punch";
+                        break;
+                    case 8:
+                        drink = "Phoenix Tear";
+                        break;
+                    default:
+                        System.out.println("Please choose a valid option.");
+                        break;
+                }
+                System.out.println("""
+                        What size would you like?
+                        1) Small
+                        2) Medium
+                        3) Large
+                        """);
+                int size = scanner.nextInt();
+                scanner.nextLine();
+                if (!drink.isEmpty()) {
+                    orders.add(new Drinks(size, drink));
+                }
                 break;
             case "3":
                 int chipsChoice = 0;
                 System.out.println("""
                         What chips would you like?
-                        1) Sahara Spice Nachos
-                        2) Classic
+                        1) Sahara Spice Fries
+                        2) Classical Gold Dipped Elf's Ears
                         3) Ogre Fingers
-                        4) Mithral Halls Nachos
+                        4) Mithril Halls Nachos
+                        5) Dwarfish Fried Ale Pickles
+                        6) Basilisk Fried Scales
                         """);
                 chipsChoice = scanner.nextInt();
                 scanner.nextLine();
                 String chips = "";
                 switch (chipsChoice) {
                     case 1:
-                        chips = "Sahara Spice Nachos";
+                        chips = "Sahara Spice Fries";
                         break;
                     case 2:
-                        chips = "Classic";
+                        chips = "Classical Gold Dipped Elf's Ears";
                         break;
                     case 3:
                         chips = "Ogre Fingers";
                         break;
                     case 4:
-                        chips = "Mithral Halls Nachos";
+                        chips = "Mithril Halls Nachos";
+                        break;
+                    case 5:
+                        chips = "Dwarfish Fried Ale Pickles";
+                        break;
+                    case 6:
+                        chips = "Basilisk Fried Scales";
                         break;
                 }
                 if (!chips.isEmpty()) {
@@ -343,19 +343,31 @@ public class OrderScreen implements CustomerOrder {
 
 
     public static void orderRemove() {
-
+        System.out.println("What is wrong with your meal ? ");
+        int count = 1;
+        for (Food f : orders) {
+            System.out.println(count + ")" + f.toString() + " Price: " + dmt.format(f.getPrice()));
+            count++;
+        }
+        System.out.println("Which item is wrong please choose from the following. ");
+        int userChoice = scanner.nextInt();
+        scanner.nextLine();
+        if (userChoice > 0 && userChoice < count) {
+            orders.remove(userChoice - 1);
+            System.out.println("Item has been removed!");
+        }
     }
 
-    public static void orderCancel() {
-
+    public static void orderCancel() throws IOException {
+        System.out.println("Please come again and try our food when you can Traveller! ");
+        orders.clear();
+        Main.main(null);
     }
-
-
 
     public static void orderCheckout() throws IOException {
         double totalPrice = 0;
         System.out.println("Whats up doc! Sadly de time has come to taketh thou gold!!!! ");
-        for (Food f: orders) {
+        for (Food f : orders) {
             System.out.println(f.toString() + " Price: " + dmt.format(f.getPrice()));
             totalPrice += f.getPrice();
         }
@@ -367,7 +379,11 @@ public class OrderScreen implements CustomerOrder {
                 """);
         String customerInput = scanner.nextLine();
         if (customerInput.charAt(0) == 'Y' || customerInput.charAt(0) == 'y') {
-            CustomerReceipt.receiptReader();
+            System.out.println("We are going to stamp your receipt on our new dragon paper! ");
+            CustomerReceipt.receiptReader(orders, totalPrice);
+            System.out.println("Please collect your receipt at the front door our Dwarven worker will hand it to you! Have the greatest evening! ");
+            orders.clear();
+            Main.main(null);
         }
     }
 }

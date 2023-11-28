@@ -12,7 +12,7 @@ public abstract class Food {
     }
 
     public String getSize() {
-        switch(size){
+        switch (size) {
             case 1:
                 return "Small";
             case 2:

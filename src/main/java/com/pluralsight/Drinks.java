@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Drinks extends Food{
+public class Drinks extends Food {
     private String flavor;
 
     public Drinks(int size, String flavor) {
@@ -22,8 +22,8 @@ public class Drinks extends Food{
     }
 
     @Override
-    public double getPrice(){
-        switch(getSize()){
+    public double getPrice() {
+        switch (getSize()) {
             case "Small":
                 return 2.00;
             case "Medium":
