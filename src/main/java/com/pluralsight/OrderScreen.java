@@ -14,7 +14,6 @@ public class OrderScreen implements CustomerOrder {
     public static List<Food> orders = new ArrayList<>();
 
 
-
     public static void orderScreen() throws IOException {
         String customerInput = " ";
         while (!customerInput.equalsIgnoreCase("0")) {
@@ -25,6 +24,8 @@ public class OrderScreen implements CustomerOrder {
                     3) Add Chips
                     4) Checkout
                     5) Remove Item
+                    6) Roll-A-Sandwich
+                    7) Roll-A-Meal
                     0) Cancel Order
                     """);
             customerInput = scanner.nextLine().trim();
@@ -38,6 +39,12 @@ public class OrderScreen implements CustomerOrder {
                     break;
                 case "5":
                     orderRemove();
+                    break;
+                case "6":
+                    rollASandwich();
+                    break;
+                case "7":
+                    rollAMeal();
                     break;
                 case "0":
                     orderCancel();
@@ -396,6 +403,333 @@ public class OrderScreen implements CustomerOrder {
             System.out.println("Please collect your receipt at the front door our Dwarven worker will hand it to you! Have the greatest evening! ");
             orders.clear();
             Main.main(null);
+        }
+    }
+
+    public static void rollASandwich() {
+        int sizeChoice = 0;
+        while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
+            System.out.println("""
+                    How big do you want your sandwich?
+                    1) 4"
+                    2) 8"
+                    3) 12"
+                    """);
+            sizeChoice = scanner.nextInt();
+            scanner.nextLine();
+        }
+        int meatChoice = (int)(Math.random() * 6) + 1;
+        int breadChoice = (int)(Math.random() * 4) + 1;
+        int cheeseChoice = (int)(Math.random() * 4) + 1;
+        String bread = "";
+        String meat = "";
+        String cheese = "";
+        switch (breadChoice) {
+            case 1:
+                bread = "White";
+                break;
+            case 2:
+                bread = "Wheat";
+                break;
+            case 3:
+                bread = "Rye";
+                break;
+            case 4:
+                bread = "Wrap";
+                break;
+        }
+        switch (meatChoice) {
+            case 1:
+                meat = "Steak";
+                break;
+            case 2:
+                meat = "Ham";
+                break;
+            case 3:
+                meat = "Salami";
+                break;
+            case 4:
+                meat = "Roast Beef";
+                break;
+            case 5:
+                meat = "Chicken";
+                break;
+            case 6:
+                meat = "Bacon";
+                break;
+        }
+        switch (cheeseChoice) {
+            case 1:
+                cheese = "American";
+                break;
+            case 2:
+                cheese = "Provolone";
+                break;
+            case 3:
+                cheese = "Cheddar";
+                break;
+            case 4:
+                cheese = "Swiss";
+                break;
+            case 5:
+                cheese = "No Cheese";
+                break;
+        }
+        List<String> toppings = new ArrayList<>();
+        toppings.add("Lettuce");
+        toppings.add("Peppers");
+        toppings.add("Onions");
+        toppings.add("Tomatoes");
+        toppings.add("Jalapenos");
+        toppings.add("Cucumbers");
+        toppings.add("Pickles");
+        toppings.add("Guacamole");
+        toppings.add("Mushrooms");
+        toppings.add("None/Next");
+        List<String> sandwichToppings = new ArrayList<>();
+        List<String> sauces = new ArrayList<>();
+        sauces.add("Mayo");
+        sauces.add("Mustard");
+        sauces.add("Ketchup");
+        sauces.add("Ranch");
+        sauces.add("Thousand Islands");
+        sauces.add("Vinaigrette");
+        sauces.add("None/Next");
+        List<String> sides = new ArrayList<>();
+        sides.add("Au jus");
+        sides.add("Sauce");
+        sides.add("None");
+        int toppingsRoll = (int)(Math.random() * 10) + 1;
+        while(toppingsRoll != 10){
+            sandwichToppings.add(toppings.get(toppingsRoll - 1));
+            toppingsRoll = (int)(Math.random() * 10) + 1;
+        }
+        toppingsRoll = (int)(Math.random() * 7) + 1;
+        while(toppingsRoll != 7){
+            sandwichToppings.add(sauces.get(toppingsRoll - 1));
+            toppingsRoll = (int)(Math.random() * 7) + 1;
+        }
+        toppingsRoll = (int)(Math.random() * 3) + 1;
+        while(toppingsRoll != 3){
+            sandwichToppings.add(sides.get(toppingsRoll - 1));
+            toppingsRoll = (int)(Math.random() * 3) + 1;
+        }
+        int toasted = (int) (Math.random() * 2);
+        boolean isToasted = false;
+        if(toasted == 1){
+            isToasted = true;
+        }
+        int extraMeat = (int) (Math.random() * 2);
+        boolean isMeaty = false;
+        if(extraMeat == 1){
+            isMeaty = true;
+        }
+        int extraCheese = (int) (Math.random() * 2);
+        boolean isCheesy = false;
+        if(extraCheese == 1){
+            isCheesy = true;
+        }
+        Sandwich rolled = new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, isToasted, isMeaty, isCheesy);
+        System.out.println("Would you like to add the following rolled sandwich to the order? ");
+        System.out.println(rolled.toString());
+        String consumerChoice = scanner.nextLine();
+        if(consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y'){
+            orders.add(rolled);
+        }
+    }
+    public static void rollAMeal(){
+        int sizeChoice = 0;
+        while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
+            System.out.println("""
+                    How big do you want your sandwich?
+                    1) 4"
+                    2) 8"
+                    3) 12"
+                    """);
+            sizeChoice = scanner.nextInt();
+            scanner.nextLine();
+        }
+        int meatChoice = (int)(Math.random() * 6) + 1;
+        int breadChoice = (int)(Math.random() * 4) + 1;
+        int cheeseChoice = (int)(Math.random() * 4) + 1;
+        String bread = "";
+        String meat = "";
+        String cheese = "";
+        switch (breadChoice) {
+            case 1:
+                bread = "White";
+                break;
+            case 2:
+                bread = "Wheat";
+                break;
+            case 3:
+                bread = "Rye";
+                break;
+            case 4:
+                bread = "Wrap";
+                break;
+        }
+        switch (meatChoice) {
+            case 1:
+                meat = "Steak";
+                break;
+            case 2:
+                meat = "Ham";
+                break;
+            case 3:
+                meat = "Salami";
+                break;
+            case 4:
+                meat = "Roast Beef";
+                break;
+            case 5:
+                meat = "Chicken";
+                break;
+            case 6:
+                meat = "Bacon";
+                break;
+        }
+        switch (cheeseChoice) {
+            case 1:
+                cheese = "American";
+                break;
+            case 2:
+                cheese = "Provolone";
+                break;
+            case 3:
+                cheese = "Cheddar";
+                break;
+            case 4:
+                cheese = "Swiss";
+                break;
+            case 5:
+                cheese = "No Cheese";
+                break;
+        }
+        List<String> toppings = new ArrayList<>();
+        toppings.add("Lettuce");
+        toppings.add("Peppers");
+        toppings.add("Onions");
+        toppings.add("Tomatoes");
+        toppings.add("Jalapenos");
+        toppings.add("Cucumbers");
+        toppings.add("Pickles");
+        toppings.add("Guacamole");
+        toppings.add("Mushrooms");
+        toppings.add("None/Next");
+        List<String> sandwichToppings = new ArrayList<>();
+        List<String> sauces = new ArrayList<>();
+        sauces.add("Mayo");
+        sauces.add("Mustard");
+        sauces.add("Ketchup");
+        sauces.add("Ranch");
+        sauces.add("Thousand Islands");
+        sauces.add("Vinaigrette");
+        sauces.add("None/Next");
+        List<String> sides = new ArrayList<>();
+        sides.add("Au jus");
+        sides.add("Sauce");
+        sides.add("None");
+        int toppingsRoll = (int)(Math.random() * 10) + 1;
+        while(toppingsRoll != 10){
+            sandwichToppings.add(toppings.get(toppingsRoll - 1));
+            toppingsRoll = (int)(Math.random() * 10) + 1;
+        }
+        toppingsRoll = (int)(Math.random() * 7) + 1;
+        while(toppingsRoll != 7){
+            sandwichToppings.add(sauces.get(toppingsRoll - 1));
+            toppingsRoll = (int)(Math.random() * 7) + 1;
+        }
+        toppingsRoll = (int)(Math.random() * 3) + 1;
+        while(toppingsRoll != 3){
+            sandwichToppings.add(sides.get(toppingsRoll - 1));
+            toppingsRoll = (int)(Math.random() * 3) + 1;
+        }
+        int toasted = (int) (Math.random() * 2);
+        boolean isToasted = false;
+        if(toasted == 1){
+            isToasted = true;
+        }
+        int extraMeat = (int) (Math.random() * 2);
+        boolean isMeaty = false;
+        if(extraMeat == 1){
+            isMeaty = true;
+        }
+        int extraCheese = (int) (Math.random() * 2);
+        boolean isCheesy = false;
+        if(extraCheese == 1){
+            isCheesy = true;
+        }
+        Sandwich rolled = new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, isToasted, isMeaty, isCheesy);
+        System.out.println("""
+                        What size would you like?
+                        1) Small
+                        2) Medium
+                        3) Large
+                        """);
+        int size = scanner.nextInt();
+        scanner.nextLine();
+        int drinkChoice = (int)(Math.random() * 8) + 1;
+        String drink = "";
+        switch (drinkChoice) {
+            case 1:
+                drink = "Bubbly Dragon's Blood";
+                break;
+            case 2:
+                drink = "Yellow Snow";
+                break;
+            case 3:
+                drink = "Ogre's Snot Ale";
+                break;
+            case 4:
+                drink = "Dwarf's Honey Mead";
+                break;
+            case 5:
+                drink = "Holy Water";
+                break;
+            case 6:
+                drink = "Glacier Water";
+                break;
+            case 7:
+                drink = "Sorcerer's Power Punch";
+                break;
+            case 8:
+                drink = "Phoenix Tear";
+                break;
+        }
+        Drinks drinks = new Drinks(size, drink);
+        String chips = "";
+        int chipsChoice = (int) (Math.random() * 6) + 1;
+        switch (chipsChoice) {
+            case 1:
+                chips = "Sahara Spice Fries";
+                break;
+            case 2:
+                chips = "Classical Gold Dipped Elf's Ears";
+                break;
+            case 3:
+                chips = "Ogre Fingers";
+                break;
+            case 4:
+                chips = "Mithril Halls Nachos";
+                break;
+            case 5:
+                chips = "Dwarfish Fried Ale Pickles";
+                break;
+            case 6:
+                chips = "Basilisk Fried Scales";
+                break;
+        }
+        Chips chip = new Chips(1, chips);
+        System.out.println("Would you like to add the following meal to the order? ");
+        System.out.println(rolled.toString());
+        System.out.println(drinks.toString());
+        System.out.println(chip.toString());
+        String consumerChoice = scanner.nextLine();
+        if(consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y'){
+            orders.add(rolled);
+            orders.add(drinks);
+            orders.add(chip);
         }
     }
 }
