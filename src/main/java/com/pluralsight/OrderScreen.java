@@ -1,11 +1,13 @@
 package com.pluralsight;
-
+import java.io.IOException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.*;
 
 public class OrderScreen implements CustomerOrder {
 
+    public static DecimalFormat dmt = new DecimalFormat("0.00");
     public static Scanner scanner = new Scanner(System.in);
 
     public static List<Food> orders = new ArrayList<>();
@@ -13,37 +15,39 @@ public class OrderScreen implements CustomerOrder {
 
 
     public static void orderScreen() {
-        System.out.println("""
-                Evening, Traveler! What do you wanna do?
-                1) Add Sandwich
-                2) Add Drink
-                3) Add Chips
-                4) Checkout
-                0) Cancel Order 
-                """);
-        String customerInput = scanner.nextLine();
-        switch (customerInput) {
+        String customerInput = " ";
+        while (!customerInput.equalsIgnoreCase("0")) {
+            System.out.println("""
+                    Evening, Traveler! What do you wanna do?
+                    1) Add Sandwich
+                    2) Add Drink
+                    3) Add Chips
+                    4) Checkout
+                    0) Cancel Order 
+                    """);
+            customerInput = scanner.nextLine().trim();
+            switch (customerInput) {
 
-            case "1":
-                orderAdd(customerInput);
-                break;
-            case "2":
-                orderAdd(customerInput);
-                break;
-            case "3":
-                orderAdd(customerInput);
-                break;
-            case "4":
-                orderDisplay();
-                break;
-            case "0":
-                break;
-            default:
-                System.out.println("Please choose a valid option.");
-                break;
+                case "1":
+                    orderAdd(customerInput);
+                    break;
+                case "2":
+                    orderAdd(customerInput);
+                    break;
+                case "3":
+                    orderAdd(customerInput);
+                    break;
+                case "4":
+                    orderCheckout();
+                    break;
+                case "0":
+                    break;
+                default:
+                    System.out.println("Please choose a valid option.");
+                    break;
+            }
         }
     }
-
 
     public static void orderAdd(String customerInput) {
         switch (customerInput) {
@@ -135,19 +139,19 @@ public class OrderScreen implements CustomerOrder {
                 String cheese = "";
                 switch (cheeseChoice) {
                     case 1:
-                        meat = "American";
+                        cheese = "American";
                         break;
                     case 2:
-                        meat = "Provolone";
+                        cheese = "Provolone";
                         break;
                     case 3:
-                        meat = "Cheddar";
+                        cheese = "Cheddar";
                         break;
                     case 4:
-                        meat = "Swiss";
+                        cheese = "Swiss";
                         break;
                     case 5:
-                        meat = "No Cheese";
+                        cheese = "No Cheese";
                         break;
                 }
 
@@ -176,7 +180,7 @@ public class OrderScreen implements CustomerOrder {
                 toppings.add("Pickles");
                 toppings.add("Guacamole");
                 toppings.add("Mushrooms");
-                toppings.add("None");
+                toppings.add("None/Next");
 
                 List<String> sandwichToppings = new ArrayList<>();
                 int toppingChoice = 0;
@@ -192,7 +196,7 @@ public class OrderScreen implements CustomerOrder {
                             7) Pickles
                             8) Guacamole
                             9) Mushrooms
-                            10) None
+                            10) None/Next
                             """);
                     toppingChoice = scanner.nextInt();
                     scanner.nextLine();
@@ -207,7 +211,7 @@ public class OrderScreen implements CustomerOrder {
                 sauces.add("Ranch");
                 sauces.add("Thousand Islands");
                 sauces.add("Vinaigrette");
-                sauces.add("None");
+                sauces.add("None/Next");
                 int sauceChoice = 0;
                 while(sauceChoice!= 7) {
                     System.out.println("""
@@ -218,7 +222,7 @@ public class OrderScreen implements CustomerOrder {
                             4) Ranch
                             5) Thousands islands
                             6) Vinaigrette
-                            7) None
+                            7) None/Next
                             """);
                     sauceChoice = scanner.nextInt();
                     scanner.nextLine();
@@ -236,7 +240,7 @@ public class OrderScreen implements CustomerOrder {
                             Would you like any sides?
                             1) Au jus (gravy ya buffoon)
                             2) Sauce
-                            3) None
+                            3) None/Next
                             """);
                     sideChoice = scanner.nextInt();
                     scanner.nextLine();
@@ -246,15 +250,9 @@ public class OrderScreen implements CustomerOrder {
                 }
                 orders.add(new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, toasted, extraMeatOption, extraCheese));
                 break;
+
             case "2":
-                System.out.println("""
-                        Would you like to add a drink to your order?
-                        Yes
-                        No
-                        """);
-                String drinkOption = scanner.nextLine().trim();
                 int drinkChoice = 0;
-                if (drinkOption.equalsIgnoreCase("yes")) {
                     System.out.println("""
                             1) Bubbly Dragon's Blood
                             2) Yellow Snow
@@ -263,10 +261,11 @@ public class OrderScreen implements CustomerOrder {
                             5) Holy Water
                             6) Glacier Water
                             7) Sorcerer's Power Punch
-                            8) Phoenix Tear                                            
+                            8) Phoenix Tear
                             """);
                     drinkChoice = scanner.nextInt();
                     scanner.nextLine();
+
                     String drink = "";
                     switch (drinkChoice) {
                         case 1:
@@ -304,10 +303,11 @@ public class OrderScreen implements CustomerOrder {
                             3) Large
                             """);
                     int size = scanner.nextInt();
+                    scanner.nextLine();
                     if (!drink.isEmpty()) {
                         orders.add(new Drinks(size, drink));
                     }
-                }
+
                 break;
             case "3":
                 int chipsChoice = 0;
@@ -338,8 +338,6 @@ public class OrderScreen implements CustomerOrder {
                 if (!chips.isEmpty()) {
                     orders.add(new Chips(1, chips));
                 }
-
-
         }
     }
 
@@ -352,15 +350,24 @@ public class OrderScreen implements CustomerOrder {
 
     }
 
-    public static void orderDisplay() {
 
-    }
 
-    public static void orderTotal() {
-
-    }
-
-    public static void orderCheckout() {
-
+    public static void orderCheckout() throws IOException {
+        double totalPrice = 0;
+        System.out.println("Whats up doc! Sadly de time has come to taketh thou gold!!!! ");
+        for (Food f: orders) {
+            System.out.println(f.toString() + " Price: " + dmt.format(f.getPrice()));
+            totalPrice += f.getPrice();
+        }
+        System.out.println("Thou price: " + dmt.format(totalPrice));
+        System.out.println("""
+                Does everything look to your liking?
+                Yay
+                Nay
+                """);
+        String customerInput = scanner.nextLine();
+        if (customerInput.charAt(0) == 'Y' || customerInput.charAt(0) == 'y') {
+            CustomerReceipt.receiptReader();
+        }
     }
 }

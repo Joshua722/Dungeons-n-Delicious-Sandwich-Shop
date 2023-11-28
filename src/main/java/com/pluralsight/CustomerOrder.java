@@ -8,11 +8,6 @@ interface CustomerOrder {
     public static void orderCancel(){}
 
 
-    public static void orderDisplay(){}
-
-
-    public static void orderTotal(){}
-
 
     public static void orderCheckout(){}
 

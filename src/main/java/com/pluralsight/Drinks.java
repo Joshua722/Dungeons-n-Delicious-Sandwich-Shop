@@ -18,7 +18,7 @@ public class Drinks extends Food{
 
     @Override
     public String toString() {
-        return "Size: " + this.getSize() + "\nFlavor: " + flavor;
+        return "Drink size: " + this.getSize() + " Flavor: " + flavor;
     }
 
     @Override
