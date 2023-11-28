@@ -1,0 +1,3 @@
+Drink size: Large Flavor: Dwarf's Honey Mead Price: 3.00
+Chips: Ogre Fingers Price: 1.50
+Price: 4.50

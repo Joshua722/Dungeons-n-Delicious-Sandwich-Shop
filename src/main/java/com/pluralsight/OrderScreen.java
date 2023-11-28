@@ -24,6 +24,7 @@ public class OrderScreen implements CustomerOrder {
                     2) Add Drink
                     3) Add Chips
                     4) Checkout
+                    5) Remove Item
                     0) Cancel Order
                     """);
             customerInput = scanner.nextLine().trim();
@@ -51,23 +52,29 @@ public class OrderScreen implements CustomerOrder {
     public static void orderAdd(String customerInput) {
         switch (customerInput) {
             case "1":
-                System.out.println("""
-                        How big do you want your sandwich?
-                        1) 4"
-                        2) 8"
-                        3) 12"
-                        """);
-                int sizeChoice = scanner.nextInt();
-                scanner.nextLine();
-                System.out.println("""
-                        What type of bread would you like?
-                        1) White
-                        2) Wheat
-                        3) Rye
-                        4) Wrap
-                        """);
-                int breadChoice = scanner.nextInt();
-                scanner.nextLine();
+                int sizeChoice = 0;
+                while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
+                    System.out.println("""
+                            How big do you want your sandwich?
+                            1) 4"
+                            2) 8"
+                            3) 12"
+                            """);
+                    sizeChoice = scanner.nextInt();
+                    scanner.nextLine();
+                }
+                int breadChoice = 0;
+                while (breadChoice != 1 && breadChoice != 2 && breadChoice != 3 && breadChoice != 4) {
+                    System.out.println("""
+                            What type of bread would you like?
+                            1) White
+                            2) Wheat
+                            3) Rye
+                            4) Wrap
+                            """);
+                    breadChoice = scanner.nextInt();
+                    scanner.nextLine();
+                }
                 String bread = "";
                 switch (breadChoice) {
                     case 1:
@@ -83,18 +90,20 @@ public class OrderScreen implements CustomerOrder {
                         bread = "Wrap";
                         break;
                 }
-
-                System.out.println("""
-                        What type of meat do you want?
-                        1) Steak
-                        2) Ham
-                        3) Salami
-                        4) Roast beef
-                        5) Chicken
-                        6) Bacon
-                        """);
-                int meatChoice = scanner.nextInt();
-                scanner.nextLine();
+                int meatChoice = 0;
+                while (meatChoice < 1 || meatChoice > 6) {
+                    System.out.println("""
+                            What type of meat do you want?
+                            1) Steak
+                            2) Ham
+                            3) Salami
+                            4) Roast beef
+                            5) Chicken
+                            6) Bacon
+                            """);
+                    meatChoice = scanner.nextInt();
+                    scanner.nextLine();
+                }
                 String meat = "";
                 switch (meatChoice) {
                     case 1:
@@ -123,16 +132,19 @@ public class OrderScreen implements CustomerOrder {
                 if (extraMeat.equalsIgnoreCase("yes")) {
                     extraMeatOption = true;
                 }
-                System.out.println("""
-                        What type of cheese would you like?
-                        1) American
-                        2) Provolone
-                        3) Cheddar
-                        4) Swiss
-                        5) No cheese
-                        """);
-                int cheeseChoice = scanner.nextInt();
-                scanner.nextLine();
+                int cheeseChoice = 0;
+                while (cheeseChoice < 1 || cheeseChoice > 5) {
+                    System.out.println("""
+                            What type of cheese would you like?
+                            1) American
+                            2) Provolone
+                            3) Cheddar
+                            4) Swiss
+                            5) No cheese
+                            """);
+                    cheeseChoice = scanner.nextInt();
+                    scanner.nextLine();
+                }
                 String cheese = "";
                 switch (cheeseChoice) {
                     case 1:
