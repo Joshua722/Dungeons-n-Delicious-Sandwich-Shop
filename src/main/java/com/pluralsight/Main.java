@@ -5,9 +5,10 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
+
         Scanner scanner = new Scanner(System.in);
         String endOrder = "";
-
+        //allows users to create a new order or exit program
         while (!endOrder.equals("0")) {
             System.out.println("""
                     Welcome to Dungeons n Delicious Sandwich Shop
