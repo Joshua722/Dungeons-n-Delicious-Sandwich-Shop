@@ -112,5 +112,10 @@ be more precise.
 #### Angel: 
 
 #### Jake:
+![Dungeons-n-Delicious-Sandwich-Shop – Sandwich.java 11_29_2023 1_14_14 PM.png](Dungeons-n-Delicious-Sandwich-Shop%20%96%20Sandwich.java%2011_29_2023%201_14_14%20PM.png)
+
+This luxurious piece of code allows for objects to have String implementations. I like to follow a simple path: K.I.S.S.
+It means "Keep It Simple, Stupid" and the toString() override makes output statements as simple as calling the object and
+the toString() method applied to the object.
 ## Conclusion:
 DND Sandwich Shop POS is not just a Java CLI application; it represents a thoughtfully designed solution that enhances the customer experience at a sandwich shop. Its user-friendly interface, and collaborative development approach make it a valuable asset for DND as it continues to grow and innovate in the food industry.
