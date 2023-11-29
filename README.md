@@ -112,7 +112,8 @@ be more precise.
 #### Angel: 
 
 #### Jake:
-![Dungeons-n-Delicious-Sandwich-Shop – Sandwich.java 11_29_2023 1_14_14 PM.png](Dungeons-n-Delicious-Sandwich-Shop - Sandwich.java 11_29_2023 1_14_14 PM.png)
+![Dungeons-n-Delicious-Sandwich-Shop – Sandwich java 11_29_2023 1_14_14 PM](https://github.com/Joshua722/Dungeons-n-Delicious-Sandwich-Shop/assets/146876325/60234375-d8a7-424e-8a3f-2899da5b6aef)
+
 
 This luxurious piece of code allows for objects to have String implementations. I like to follow a simple path: K.I.S.S.
 It means "Keep It Simple, Stupid" and the toString() override makes output statements as simple as calling the object and
