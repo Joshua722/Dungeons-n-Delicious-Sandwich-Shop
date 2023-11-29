@@ -114,7 +114,7 @@ be more precise.
 
 
 
-Input validation is a very important practice in creating robust and user-friendly programs. The above code segment uses a switch statement to handle user input for selecting the size of a sandwich. The while loop prompts the user until a valid size (1, 2, or 3) is entered. This validation is crucial for preventing errors, enhancing the user experience by guiding them to correct inputs, so that the code that is likely dependent on the validated input, executes accurately.
+Input validation is a very important practice in creating robust and user-friendly programs. In the above code segment, we use a switch statement to handle user input for selecting the size of a sandwich. The while loop that we implemted prompts the user until a valid size (1, 2, or 3) is entered. We believe that this validation is crucial for preventing errors, enhancing the user experience by guiding them to correct inputs, so that the code that is likely dependent on the validated input, executes accurately.
 
 
 #### Angel: 
