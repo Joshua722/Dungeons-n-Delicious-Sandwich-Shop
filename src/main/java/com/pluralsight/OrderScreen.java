@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.*;
 
 public class OrderScreen implements CustomerOrder {
-
+    //created static variables to be used within this class
     public static DecimalFormat dmt = new DecimalFormat("0.00");
     public static Scanner scanner = new Scanner(System.in);
 
@@ -16,6 +16,7 @@ public class OrderScreen implements CustomerOrder {
 
     public static void orderScreen() throws IOException {
         String customerInput = " ";
+        //This will include our menu options
         while (!customerInput.equalsIgnoreCase("0")) {
             System.out.println("""
                     Evening, Traveler! What dost thou wish to undertake?
@@ -30,7 +31,7 @@ public class OrderScreen implements CustomerOrder {
                     """);
             customerInput = scanner.nextLine().trim();
             switch (customerInput) {
-
+                //instead of having multiple lines of cases we condensed into one that call same method
                 case "1", "2", "3":
                     orderAdd(customerInput);
                     break;
@@ -38,7 +39,11 @@ public class OrderScreen implements CustomerOrder {
                     orderCheckout();
                     break;
                 case "5":
-                    orderRemove();
+                    if (!orders.isEmpty()) {
+                        orderRemove();
+                    } else {
+                        System.out.println("Hark! Thy order awaits, yet unspoken. Choose from our menu of medieval wonders, and our artisans shall swiftly weave a feast fit for nobility.");
+                    }
                     break;
                 case "6":
                     rollASandwich();
@@ -57,6 +62,10 @@ public class OrderScreen implements CustomerOrder {
     }
 
     public static void orderAdd(String customerInput) {
+        //we grab userInput from above to determine which item they are adding
+        //case 1 sandwich
+        //case 2 drink
+        //case 3 chips
         switch (customerInput) {
             case "1":
                 int sizeChoice = 0;
@@ -80,9 +89,10 @@ public class OrderScreen implements CustomerOrder {
                             4) Mermaid's Seagrass
                             """);
                     breadChoice = scanner.nextInt();
-                    scanner.nextLine();
+                    scanner.nextLine(); //consume line after int
                 }
                 String bread = "";
+                //grabs userInput from above question and stores into variable then passes through series of cases
                 switch (breadChoice) {
                     case 1:
                         bread = "Dragon's Ember Barley";
@@ -112,6 +122,7 @@ public class OrderScreen implements CustomerOrder {
                     scanner.nextLine();
                 }
                 String meat = "";
+                //grabs userInput from above question and stores into variable then passes through series of cases
                 switch (meatChoice) {
                     case 1:
                         meat = "Griffin's Roast";
@@ -135,11 +146,13 @@ public class OrderScreen implements CustomerOrder {
 
                 System.out.println("Shall we enhance thy order with an infusion of extra enchanted meats, noble diner? (yes or no) ");
                 String extraMeat = scanner.nextLine().trim();
+                //asking user if they want extra meat and pre-setting a boolean to false and if they say yes we changed to true
                 boolean extraMeatOption = false;
                 if (extraMeat.equalsIgnoreCase("yes")) {
                     extraMeatOption = true;
                 }
                 int cheeseChoice = 0;
+                //grabs userInput from above question and stores into variable then passes through series of cases
                 while (cheeseChoice < 1 || cheeseChoice > 5) {
                     System.out.println("""
                             Of which mystical cheese shall grace thy enchanted banquet?
@@ -153,6 +166,7 @@ public class OrderScreen implements CustomerOrder {
                     scanner.nextLine();
                 }
                 String cheese = "";
+                //grabs userInput from above question and stores into variable then passes through series of cases
                 switch (cheeseChoice) {
                     case 1:
                         cheese = "Wyrmwood Cheddar";
@@ -218,6 +232,7 @@ public class OrderScreen implements CustomerOrder {
                         sandwichToppings.add(toppings.get(toppingChoice - 1));
                     }
                 }
+                //list of our fantasy sauces
                 List<String> sauces = new ArrayList<>();
                 sauces.add("Dragon's Breath Sriracha Mayo");
                 sauces.add("Mermaid's Seaweed Pesto");
@@ -227,6 +242,7 @@ public class OrderScreen implements CustomerOrder {
                 sauces.add("Vinaigrette");
                 sauces.add("None/Next");
                 int sauceChoice = 0;
+                //prompts user for the sauce that they want
                 while (sauceChoice != 7) {
                     System.out.println("""
                             Wouldst thou wish to accompany thy dish with any ambrosial elixirs or enchanted sauces?
@@ -240,6 +256,7 @@ public class OrderScreen implements CustomerOrder {
                             """);
                     sauceChoice = scanner.nextInt();
                     scanner.nextLine();
+                    //have to do -1 because of options not lining up with list index
                     if (sauceChoice > 0 && sauceChoice < sauces.size()) {
                         sandwichToppings.add(sauces.get(sauceChoice - 1));
                     }
@@ -262,6 +279,7 @@ public class OrderScreen implements CustomerOrder {
                         sandwichToppings.add(sides.get(sideChoice - 1));
                     }
                 }
+                //after all sandwich items have been record we will add to our orders list that was created at the top
                 orders.add(new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, toasted, extraMeatOption, extraCheese));
                 break;
             case "2":
@@ -316,6 +334,7 @@ public class OrderScreen implements CustomerOrder {
                         """);
                 int size = scanner.nextInt();
                 scanner.nextLine();
+                //if drink is chosen then it will be added to list
                 if (!drink.isEmpty()) {
                     orders.add(new Drinks(size, drink));
                 }
@@ -354,6 +373,7 @@ public class OrderScreen implements CustomerOrder {
                         chips = "Basilisk Fried Scales";
                         break;
                 }
+                //if chips are chosen then it will add it to list
                 if (!chips.isEmpty()) {
                     orders.add(new Chips(1, chips));
                 }
@@ -364,10 +384,13 @@ public class OrderScreen implements CustomerOrder {
     public static void orderRemove() {
         System.out.println("What ails thy noble feast, that it may not satisfy thy hungering desires? ");
         int count = 1;
+        //for every food item in the orders list it will print with our toString method
+        //we added a count to differentiate between each food item and make it easier for user to select an item
         for (Food f : orders) {
             System.out.println(count + ")" + f.toString() + " Price: " + dmt.format(f.getPrice()));
             count++;
         }
+        //will ask user for item that is wrong and remove from the existing list
         System.out.println("Which item is wrong please choose from the following. ");
         int userChoice = scanner.nextInt();
         scanner.nextLine();
@@ -378,14 +401,17 @@ public class OrderScreen implements CustomerOrder {
     }
 
     public static void orderCancel() throws IOException {
+        //we clear out the order's list
         System.out.println("I bid thee return at thy leisure, O Traveler, and indulge once more in the delights of our culinary enchantments!");
         orders.clear();
+        //calling main passing through the arg parameter with null
         Main.main(null);
     }
 
     public static void orderCheckout() throws IOException {
         double totalPrice = 0;
         System.out.println("Hark! Greetings, esteemed individual! Regrettably, the time hath come to claim thine gold with a heavy heart.");
+        //for every food item in the orders list it will print with our toString method
         for (Food f : orders) {
             System.out.println(f.toString() + "\nPrice: " + dmt.format(f.getPrice()));
             totalPrice += f.getPrice();
@@ -397,16 +423,21 @@ public class OrderScreen implements CustomerOrder {
                 Nay
                 """);
         String customerInput = scanner.nextLine();
+        //we used charAt in case user wants to type yes yeah ye or anything along those lines
         if (customerInput.charAt(0) == 'Y' || customerInput.charAt(0) == 'y') {
             System.out.println("Behold! We shall imprint thy receipt upon parchment of the noble dragon's ilk, fresh from our enchanted treasury! ");
+            //call our receipt printing method and store receipt in a folder with the local date & time as file name
             CustomerReceipt.receiptReader(orders, totalPrice);
             System.out.println("Pray, retrieve thy receipt at the threshold, where our diligent Dwarven artisan awaits to deliver it unto thee! May thy evening be filled with grandeur! ");
+            //after we print receipt we start with a fresh list to accept new orders
             orders.clear();
             Main.main(null);
         }
     }
 
     public static void rollASandwich() {
+        //EXTRA WORK
+        //In this method we randomly generate you a funky sandwich
         int sizeChoice = 0;
         while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
             System.out.println("""
@@ -418,6 +449,7 @@ public class OrderScreen implements CustomerOrder {
             sizeChoice = scanner.nextInt();
             scanner.nextLine();
         }
+        //multiply by our range and then we add one to get our min
         int meatChoice = (int) (Math.random() * 6) + 1;
         int breadChoice = (int) (Math.random() * 4) + 1;
         int cheeseChoice = (int) (Math.random() * 4) + 1;
@@ -499,6 +531,7 @@ public class OrderScreen implements CustomerOrder {
         sides.add("Elf-Kissed Quinoa Pilaf");
         sides.add("Harpy's Herb-infused Rice");
         sides.add("None");
+        //multiply by our range and then we add one to get our min
         int toppingsRoll = (int) (Math.random() * 10) + 1;
         while (toppingsRoll != 10) {
             sandwichToppings.add(toppings.get(toppingsRoll - 1));
@@ -514,6 +547,7 @@ public class OrderScreen implements CustomerOrder {
             sandwichToppings.add(sides.get(toppingsRoll - 1));
             toppingsRoll = (int) (Math.random() * 3) + 1;
         }
+        //we generate response between 0 and 1
         int toasted = (int) (Math.random() * 2);
         boolean isToasted = false;
         if (toasted == 1) {
@@ -529,6 +563,7 @@ public class OrderScreen implements CustomerOrder {
         if (extraCheese == 1) {
             isCheesy = true;
         }
+        //after our funky sandwich has been completed we add to our orders list
         Sandwich rolled = new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, isToasted, isMeaty, isCheesy);
         System.out.println("Would you like to add the following rolled sandwich to the order? ");
         System.out.println(rolled.toString());
@@ -539,6 +574,7 @@ public class OrderScreen implements CustomerOrder {
     }
 
     public static void rollAMeal() {
+        //same as rollASandwich Method but this it is applied to the whole meal
         int sizeChoice = 0;
         while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
             System.out.println("""
@@ -722,10 +758,14 @@ public class OrderScreen implements CustomerOrder {
                 break;
         }
         Chips chip = new Chips(1, chips);
-        System.out.println("Wilt thou include the meal, a dish of magical essence, to thy feast? ");
         System.out.println(rolled.toString());
         System.out.println(drinks.toString());
         System.out.println(chip.toString());
+        System.out.println("""
+                Wilt thou include the meal, a dish of magical essence, to thy feast?
+                Yay
+                Nay
+                """);
         String consumerChoice = scanner.nextLine();
         if (consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y') {
             orders.add(rolled);

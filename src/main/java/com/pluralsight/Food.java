@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+//Co-written by Paul and Jake
 public abstract class Food {
     private int size;
 
@@ -22,9 +23,5 @@ public abstract class Food {
             default:
                 return "";
         }
-    }
-
-    public void setSize(int size) {
-        this.size = size;
     }
 }
