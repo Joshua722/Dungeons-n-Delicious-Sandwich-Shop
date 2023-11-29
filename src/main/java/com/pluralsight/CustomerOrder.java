@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+//Joshua made interfaces for order screen
 interface CustomerOrder {
     public static void orderAdd() {
     }
@@ -14,6 +15,5 @@ interface CustomerOrder {
 
     public static void orderCheckout() {
     }
-
 
 }

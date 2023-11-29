@@ -39,7 +39,11 @@ public class OrderScreen implements CustomerOrder {
                     orderCheckout();
                     break;
                 case "5":
-                    orderRemove();
+                    if (!orders.isEmpty()) {
+                        orderRemove();
+                    } else {
+                        System.out.println("Hark! Thy order awaits, yet unspoken. Choose from our menu of medieval wonders, and our artisans shall swiftly weave a feast fit for nobility.");
+                    }
                     break;
                 case "6":
                     rollASandwich();
@@ -754,10 +758,14 @@ public class OrderScreen implements CustomerOrder {
                 break;
         }
         Chips chip = new Chips(1, chips);
-        System.out.println("Wilt thou include the meal, a dish of magical essence, to thy feast? ");
         System.out.println(rolled.toString());
         System.out.println(drinks.toString());
         System.out.println(chip.toString());
+        System.out.println("""
+                Wilt thou include the meal, a dish of magical essence, to thy feast?
+                Yay
+                Nay
+                """);
         String consumerChoice = scanner.nextLine();
         if (consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y') {
             orders.add(rolled);

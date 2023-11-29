@@ -1,5 +1,6 @@
 package com.pluralsight;
 
+//Co-written by Paul and Jake
 public class Drinks extends Food {
     private String flavor;
 
@@ -8,13 +9,6 @@ public class Drinks extends Food {
         this.flavor = flavor;
     }
 
-    public String getFlavor() {
-        return flavor;
-    }
-
-    public void setFlavor(String flavor) {
-        this.flavor = flavor;
-    }
 
     @Override
     public String toString() {

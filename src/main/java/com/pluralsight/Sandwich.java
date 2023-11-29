@@ -1,7 +1,7 @@
 package com.pluralsight;
-
 import java.util.*;
 
+//Co-written by Paul and Jake
 public class Sandwich extends Food {
     private String bread, meat, cheese;
     private List<String> toppings;
@@ -18,66 +18,7 @@ public class Sandwich extends Food {
         this.extraCheese = extraCheese;
     }
 
-    public String getBread() {
-        return bread;
-    }
-
-    public void setBread(String bread) {
-        this.bread = bread;
-    }
-
-    public String getMeat() {
-        return meat;
-    }
-
-    public void setMeat(String meat) {
-        this.meat = meat;
-    }
-
-    public String getCheese() {
-        return cheese;
-    }
-
-    public void setCheese(String cheese) {
-        this.cheese = cheese;
-    }
-
-    public List<String> getToppings() {
-        return toppings;
-    }
-
-    public void setToppings(List<String> toppings) {
-        this.toppings = toppings;
-    }
-
-    public void addTopping(String topping) {
-        this.toppings.add(topping);
-    }
-
-    public boolean isToasted() {
-        return toasted;
-    }
-
-    public void setToasted(boolean toasted) {
-        this.toasted = toasted;
-    }
-
-    public boolean isExtraMeat() {
-        return extraMeat;
-    }
-
-    public void setExtraMeat(boolean extraMeat) {
-        this.extraMeat = extraMeat;
-    }
-
-    public boolean isExtraCheese() {
-        return extraCheese;
-    }
-
-    public void setExtraCheese(boolean extraCheese) {
-        this.extraCheese = extraCheese;
-    }
-
+    //This displays customer choices
     @Override
     public String toString() {
         StringBuilder sandwich = new StringBuilder();
@@ -91,6 +32,7 @@ public class Sandwich extends Food {
         }
         return sandwich.toString();
     }
+
 
     @Override
     public double getPrice() {
