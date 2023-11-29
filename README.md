@@ -107,7 +107,11 @@ This piece of code creates a string with the variable fileName and I included th
 Then I concatenate the local date and time while inserting into the time formatter that was created earlier on in
 the class. In the next line we will be creating that file with a bufferedWriter, using a BufferedWriter allows to it
 be more precise.
+
 #### Paul:
+![image](https://github.com/Joshua722/Dungeons-n-Delicious-Sandwich-Shop/assets/14105717/c72349dc-3fce-4122-80bf-c247dcd5e9f3)
+Input validation is a very important practice in creating robust and user-friendly programs. The above code segment uses a switch statement to handle user input for selecting the size of a sandwich. The while loop prompts the user until a valid size (1, 2, or 3) is entered. This validation is crucial for preventing errors, enhancing the user experience by guiding them to correct inputs, so that the code that is likely dependent on the validated input, executes accurately.
+
 
 #### Angel: 
 
