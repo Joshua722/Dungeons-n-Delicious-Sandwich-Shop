@@ -118,6 +118,12 @@ Input validation is a very important practice in creating robust and user-friend
 
 
 #### Angel: 
+![img_21.png](img_21.png)
+
+This connects the order screen which holds the main classes needed to hold inputs from others and information the user adds. 
+Also gives the option to exit out the entire program which I always find pretty neat and if the user were to try to input
+the wrong number asked for then it would display for them to try again. It was put in a while loop in the event someone 
+wants to add a new order.
 
 #### Jake:
 ![Dungeons-n-Delicious-Sandwich-Shop – Sandwich java 11_29_2023 1_14_14 PM](https://github.com/Joshua722/Dungeons-n-Delicious-Sandwich-Shop/assets/146876325/60234375-d8a7-424e-8a3f-2899da5b6aef)
