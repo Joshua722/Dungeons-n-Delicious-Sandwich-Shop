@@ -81,13 +81,13 @@ public class Sandwich extends Food {
     @Override
     public String toString() {
         StringBuilder sandwich = new StringBuilder();
-        sandwich.append("Sandwich: ");
-        sandwich.append(bread + " " + meat + " " + cheese);
+        sandwich.append("Sandwich: \n");
+        sandwich.append(bread + "\n" + meat + "\n" + cheese);
         for (String s : toppings) {
-            sandwich.append(" " + s);
+            sandwich.append("\n" + s);
         }
         if (toasted) {
-            sandwich.append(" Toasted");
+            sandwich.append("\nToasted");
         }
         return sandwich.toString();
     }

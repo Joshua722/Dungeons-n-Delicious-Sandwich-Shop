@@ -19,10 +19,10 @@ public abstract class CustomerReceipt {
         String fileName = "src/main/Receipts/" + receiptTime.format(dateTimeFormatter) + ".txt";
         BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(fileName));
         for (Food f : foods) {
-            bufferedWriter.write(f.toString() + " Price: " + dmt.format(f.getPrice()));
+            bufferedWriter.write(f.toString() + "\nPrice: " + dmt.format(f.getPrice()));
             bufferedWriter.newLine();
         }
-        bufferedWriter.write("Price: " + dmt.format(totalPrice));
+        bufferedWriter.write("Total Price: " + dmt.format(totalPrice));
         bufferedWriter.close();
 
     }

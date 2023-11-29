@@ -387,10 +387,10 @@ public class OrderScreen implements CustomerOrder {
         double totalPrice = 0;
         System.out.println("Hark! Greetings, esteemed individual! Regrettably, the time hath come to claim thine gold with a heavy heart.");
         for (Food f : orders) {
-            System.out.println(f.toString() + " Price: " + dmt.format(f.getPrice()));
+            System.out.println(f.toString() + "\nPrice: " + dmt.format(f.getPrice()));
             totalPrice += f.getPrice();
         }
-        System.out.println("Thou price: " + dmt.format(totalPrice));
+        System.out.println("Thou Total Price: " + dmt.format(totalPrice));
         System.out.println("""
                 Doth everything appear satisfactory unto thee?
                 Yay
@@ -418,9 +418,9 @@ public class OrderScreen implements CustomerOrder {
             sizeChoice = scanner.nextInt();
             scanner.nextLine();
         }
-        int meatChoice = (int)(Math.random() * 6) + 1;
-        int breadChoice = (int)(Math.random() * 4) + 1;
-        int cheeseChoice = (int)(Math.random() * 4) + 1;
+        int meatChoice = (int) (Math.random() * 6) + 1;
+        int breadChoice = (int) (Math.random() * 4) + 1;
+        int cheeseChoice = (int) (Math.random() * 4) + 1;
         String bread = "";
         String meat = "";
         String cheese = "";
@@ -499,45 +499,46 @@ public class OrderScreen implements CustomerOrder {
         sides.add("Elf-Kissed Quinoa Pilaf");
         sides.add("Harpy's Herb-infused Rice");
         sides.add("None");
-        int toppingsRoll = (int)(Math.random() * 10) + 1;
-        while(toppingsRoll != 10){
+        int toppingsRoll = (int) (Math.random() * 10) + 1;
+        while (toppingsRoll != 10) {
             sandwichToppings.add(toppings.get(toppingsRoll - 1));
-            toppingsRoll = (int)(Math.random() * 10) + 1;
+            toppingsRoll = (int) (Math.random() * 10) + 1;
         }
-        toppingsRoll = (int)(Math.random() * 7) + 1;
-        while(toppingsRoll != 7){
+        toppingsRoll = (int) (Math.random() * 7) + 1;
+        while (toppingsRoll != 7) {
             sandwichToppings.add(sauces.get(toppingsRoll - 1));
-            toppingsRoll = (int)(Math.random() * 7) + 1;
+            toppingsRoll = (int) (Math.random() * 7) + 1;
         }
-        toppingsRoll = (int)(Math.random() * 3) + 1;
-        while(toppingsRoll != 3){
+        toppingsRoll = (int) (Math.random() * 3) + 1;
+        while (toppingsRoll != 3) {
             sandwichToppings.add(sides.get(toppingsRoll - 1));
-            toppingsRoll = (int)(Math.random() * 3) + 1;
+            toppingsRoll = (int) (Math.random() * 3) + 1;
         }
         int toasted = (int) (Math.random() * 2);
         boolean isToasted = false;
-        if(toasted == 1){
+        if (toasted == 1) {
             isToasted = true;
         }
         int extraMeat = (int) (Math.random() * 2);
         boolean isMeaty = false;
-        if(extraMeat == 1){
+        if (extraMeat == 1) {
             isMeaty = true;
         }
         int extraCheese = (int) (Math.random() * 2);
         boolean isCheesy = false;
-        if(extraCheese == 1){
+        if (extraCheese == 1) {
             isCheesy = true;
         }
         Sandwich rolled = new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, isToasted, isMeaty, isCheesy);
         System.out.println("Would you like to add the following rolled sandwich to the order? ");
         System.out.println(rolled.toString());
         String consumerChoice = scanner.nextLine();
-        if(consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y'){
+        if (consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y') {
             orders.add(rolled);
         }
     }
-    public static void rollAMeal(){
+
+    public static void rollAMeal() {
         int sizeChoice = 0;
         while (sizeChoice != 1 && sizeChoice != 2 && sizeChoice != 3) {
             System.out.println("""
@@ -549,9 +550,9 @@ public class OrderScreen implements CustomerOrder {
             sizeChoice = scanner.nextInt();
             scanner.nextLine();
         }
-        int meatChoice = (int)(Math.random() * 6) + 1;
-        int breadChoice = (int)(Math.random() * 4) + 1;
-        int cheeseChoice = (int)(Math.random() * 4) + 1;
+        int meatChoice = (int) (Math.random() * 6) + 1;
+        int breadChoice = (int) (Math.random() * 4) + 1;
+        int cheeseChoice = (int) (Math.random() * 4) + 1;
         String bread = "";
         String meat = "";
         String cheese = "";
@@ -630,46 +631,46 @@ public class OrderScreen implements CustomerOrder {
         sides.add("Elf-Kissed Quinoa Pilaf");
         sides.add("Harpy's Herb-infused Rice");
         sides.add("None");
-        int toppingsRoll = (int)(Math.random() * 10) + 1;
-        while(toppingsRoll != 10){
+        int toppingsRoll = (int) (Math.random() * 10) + 1;
+        while (toppingsRoll != 10) {
             sandwichToppings.add(toppings.get(toppingsRoll - 1));
-            toppingsRoll = (int)(Math.random() * 10) + 1;
+            toppingsRoll = (int) (Math.random() * 10) + 1;
         }
-        toppingsRoll = (int)(Math.random() * 7) + 1;
-        while(toppingsRoll != 7){
+        toppingsRoll = (int) (Math.random() * 7) + 1;
+        while (toppingsRoll != 7) {
             sandwichToppings.add(sauces.get(toppingsRoll - 1));
-            toppingsRoll = (int)(Math.random() * 7) + 1;
+            toppingsRoll = (int) (Math.random() * 7) + 1;
         }
-        toppingsRoll = (int)(Math.random() * 3) + 1;
-        while(toppingsRoll != 3){
+        toppingsRoll = (int) (Math.random() * 3) + 1;
+        while (toppingsRoll != 3) {
             sandwichToppings.add(sides.get(toppingsRoll - 1));
-            toppingsRoll = (int)(Math.random() * 3) + 1;
+            toppingsRoll = (int) (Math.random() * 3) + 1;
         }
         int toasted = (int) (Math.random() * 2);
         boolean isToasted = false;
-        if(toasted == 1){
+        if (toasted == 1) {
             isToasted = true;
         }
         int extraMeat = (int) (Math.random() * 2);
         boolean isMeaty = false;
-        if(extraMeat == 1){
+        if (extraMeat == 1) {
             isMeaty = true;
         }
         int extraCheese = (int) (Math.random() * 2);
         boolean isCheesy = false;
-        if(extraCheese == 1){
+        if (extraCheese == 1) {
             isCheesy = true;
         }
         Sandwich rolled = new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, isToasted, isMeaty, isCheesy);
         System.out.println("""
-                        What size would you like?
-                        1) Small
-                        2) Medium
-                        3) Large
-                        """);
+                What size Drink would you like?
+                1) Small
+                2) Medium
+                3) Large
+                """);
         int size = scanner.nextInt();
         scanner.nextLine();
-        int drinkChoice = (int)(Math.random() * 8) + 1;
+        int drinkChoice = (int) (Math.random() * 8) + 1;
         String drink = "";
         switch (drinkChoice) {
             case 1:
@@ -726,7 +727,7 @@ public class OrderScreen implements CustomerOrder {
         System.out.println(drinks.toString());
         System.out.println(chip.toString());
         String consumerChoice = scanner.nextLine();
-        if(consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y'){
+        if (consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y') {
             orders.add(rolled);
             orders.add(drinks);
             orders.add(chip);
