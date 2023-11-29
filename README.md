@@ -1,8 +1,8 @@
 # Dungeons-n-Delicious-Sandwich-Shop - Java CLI Point of Sales Application
-# Overview:
+## Overview:
 DND Sandwich Shop POS is a custom application developed in Java. This project addresses the need to automate the order process for DND, a growing sandwich shop that allows customers to fully customize their sandwich orders. The application is designed as a command-line interface (CLI) and follows Object-Oriented Analysis and Design principles.
 
-# Key Features:
+## Key Features:
 Customization Options:
 
 Customers can order sandwiches in three sizes (4", 8", and 12").
@@ -11,31 +11,48 @@ Customize toppings, including both regular and premium options.
 Add extra toppings with an additional cost for premium choices.
 Specify whether the sandwich should be toasted.
 
-# Order Management:
+## Order Management:
 Customers can place an order with one or more sandwiches.
 Each sandwich is customizable, allowing for a personalized experience.
 Drinks and chips can be added to the order.
 
-# Order Display and Receipts:
+## Order Display and Receipts:
 The application displays order details, including the list of sandwiches with toppings.
 Shows the total cost of the order.
 When the order is completed, a receipt file is generated and saved with a timestamp.
 
-# Technical Details:
+## Technical Details:
 Object-Oriented Design:
 The project leverages Object-Oriented Analysis and Design principles.
 Classes and interfaces are used to structure the solution, promoting modularity and maintainability.
 
-# Project Setup:
+## Project Setup:
 The codebase is hosted on GitHub, providing a collaborative environment for team members.
 A project board on GitHub is utilized for managing tasks and tracking progress.
 
-# User Interaction:
+## User Interaction:
 The application employs a user-friendly CLI with a series of screens for order creation and management.
 Options are provided to navigate through the ordering process, and user input is validated.
 
-# Flexibility and Extensibility:
+## Flexibility and Extensibility:
 The code is structured to accommodate future enhancements, such as online order capabilities.
 
-# Class Diagram:
+## Class Diagram:
 ![DND Sandwich Shop](https://github.com/Joshua722/Dungeons-n-Delicious-Sandwich-Shop/assets/14105717/db76a432-3261-4daf-847c-c9155c0d4a3f)
+
+## How to Use:
+1. Clone the Repository:
+Team members can easily clone the project repository to their local machines.
+
+2. Run the Application:
+The application can be executed by running the java com.pluralsight.Main command.
+User Interaction:
+
+3. Users navigate through a series of screens (Home, Order, Add Sandwich, Add Drink, Add Chips, Checkout) to create and manage orders.
+
+## Contribution Guidelines:
+Collaborative Development:
+The project encourages collaboration through forking, creating feature branches, and submitting pull requests.
+
+## Conclusion:
+DND Sandwich Shop POS is not just a Java CLI application; it represents a thoughtfully designed solution that enhances the customer experience at a sandwich shop. Its user-friendly interface, and collaborative development approach make it a valuable asset for DND as it continues to grow and innovate in the food industry.
