@@ -285,6 +285,7 @@ public class OrderScreen implements CustomerOrder {
             case "2":
                 int drinkChoice = 0;
                 System.out.println("""
+                        What kind of drink would you like?
                         1) Bubbly Dragon's Blood
                         2) Yellow Snow
                         3) Ogre's Snot Ale
@@ -565,8 +566,8 @@ public class OrderScreen implements CustomerOrder {
         }
         //after our funky sandwich has been completed we add to our orders list
         Sandwich rolled = new Sandwich(sizeChoice, bread, meat, cheese, sandwichToppings, isToasted, isMeaty, isCheesy);
-        System.out.println("Would you like to add the following rolled sandwich to the order? ");
         System.out.println(rolled.toString());
+        System.out.println("Would you like to add the following rolled sandwich to the order? ");
         String consumerChoice = scanner.nextLine();
         if (consumerChoice.charAt(0) == 'y' || consumerChoice.charAt(0) == 'Y') {
             orders.add(rolled);
