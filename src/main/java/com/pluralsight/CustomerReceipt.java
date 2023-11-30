@@ -11,7 +11,7 @@ import com.pluralsight.OrderScreen.*;
 import static com.pluralsight.OrderScreen.dmt;
 
 //Co-written by Josh, Jake, Paul and Angel
-public abstract class CustomerReceipt {
+public class CustomerReceipt {
 
     public static void receiptReader(List<Food> foods, double totalPrice) throws IOException {
         //create Writer
